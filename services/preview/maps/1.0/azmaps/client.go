@@ -1,7 +1,7 @@
-// Package maps implements the Azure ARM Maps service API version .
+// Package azmaps implements the Azure ARM Azmaps service API version .
 //
 //
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -25,10 +25,10 @@ import (
 )
 
 const (
-// DefaultBaseURI is the default URI used for the service Maps
+// DefaultBaseURI is the default URI used for the service Azmaps
 DefaultBaseURI = "https://atlas.microsoft.com")
 
-// BaseClient is the base client for Maps.
+// BaseClient is the base client for Azmaps.
 type BaseClient struct {
     autorest.Client
     BaseURI string

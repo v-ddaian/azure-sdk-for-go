@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -26,7 +26,7 @@ import (
     "github.com/Azure/go-autorest/autorest/validation"
 )
 
-// ElevationClient is the client for the Elevation methods of the Maps service.
+// ElevationClient is the client for the Elevation methods of the Azmaps service.
 type ElevationClient struct {
     BaseClient
 }
@@ -78,25 +78,25 @@ func (client ElevationClient) GetDataForBoundingBox(ctx context.Context, bounds 
         { TargetValue: columns,
          Constraints: []validation.Constraint{	{Target: "columns", Name: validation.InclusiveMaximum, Rule: float64(1000), Chain: nil },
         	{Target: "columns", Name: validation.InclusiveMinimum, Rule: float64(2), Chain: nil }}}}); err != nil {
-        return result, validation.NewError("maps.ElevationClient", "GetDataForBoundingBox", err.Error())
+        return result, validation.NewError("azmaps.ElevationClient", "GetDataForBoundingBox", err.Error())
         }
 
         req, err := client.GetDataForBoundingBoxPreparer(ctx, bounds, rows, columns)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.ElevationClient", "GetDataForBoundingBox", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.ElevationClient", "GetDataForBoundingBox", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetDataForBoundingBoxSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.ElevationClient", "GetDataForBoundingBox", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.ElevationClient", "GetDataForBoundingBox", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetDataForBoundingBoxResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.ElevationClient", "GetDataForBoundingBox", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.ElevationClient", "GetDataForBoundingBox", resp, "Failure responding to request")
         return
         }
 
@@ -176,25 +176,25 @@ func (client ElevationClient) GetDataForPoints(ctx context.Context, points [][]s
         if err := validation.Validate([]validation.Validation{
         { TargetValue: points,
          Constraints: []validation.Constraint{	{Target: "points", Name: validation.Null, Rule: true, Chain: nil }}}}); err != nil {
-        return result, validation.NewError("maps.ElevationClient", "GetDataForPoints", err.Error())
+        return result, validation.NewError("azmaps.ElevationClient", "GetDataForPoints", err.Error())
         }
 
         req, err := client.GetDataForPointsPreparer(ctx, points)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.ElevationClient", "GetDataForPoints", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.ElevationClient", "GetDataForPoints", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetDataForPointsSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.ElevationClient", "GetDataForPoints", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.ElevationClient", "GetDataForPoints", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetDataForPointsResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.ElevationClient", "GetDataForPoints", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.ElevationClient", "GetDataForPoints", resp, "Failure responding to request")
         return
         }
 
@@ -284,25 +284,25 @@ func (client ElevationClient) GetDataForPolyline(ctx context.Context, lines [][]
         Chain: []validation.Constraint{	{Target: "samples", Name: validation.InclusiveMaximum, Rule: float64(2000), Chain: nil },
         	{Target: "samples", Name: validation.InclusiveMinimum, Rule: float64(2), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.ElevationClient", "GetDataForPolyline", err.Error())
+        return result, validation.NewError("azmaps.ElevationClient", "GetDataForPolyline", err.Error())
         }
 
         req, err := client.GetDataForPolylinePreparer(ctx, lines, samples)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.ElevationClient", "GetDataForPolyline", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.ElevationClient", "GetDataForPolyline", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetDataForPolylineSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.ElevationClient", "GetDataForPolyline", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.ElevationClient", "GetDataForPolyline", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetDataForPolylineResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.ElevationClient", "GetDataForPolyline", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.ElevationClient", "GetDataForPolyline", resp, "Failure responding to request")
         return
         }
 
@@ -384,25 +384,25 @@ func (client ElevationClient) PostDataForPoints(ctx context.Context, pointsReque
         if err := validation.Validate([]validation.Validation{
         { TargetValue: pointsRequestBody,
          Constraints: []validation.Constraint{	{Target: "pointsRequestBody", Name: validation.Null, Rule: true, Chain: nil }}}}); err != nil {
-        return result, validation.NewError("maps.ElevationClient", "PostDataForPoints", err.Error())
+        return result, validation.NewError("azmaps.ElevationClient", "PostDataForPoints", err.Error())
         }
 
         req, err := client.PostDataForPointsPreparer(ctx, pointsRequestBody)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.ElevationClient", "PostDataForPoints", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.ElevationClient", "PostDataForPoints", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.PostDataForPointsSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.ElevationClient", "PostDataForPoints", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.ElevationClient", "PostDataForPoints", resp, "Failure sending request")
         return
         }
 
         result, err = client.PostDataForPointsResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.ElevationClient", "PostDataForPoints", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.ElevationClient", "PostDataForPoints", resp, "Failure responding to request")
         return
         }
 
@@ -492,25 +492,25 @@ func (client ElevationClient) PostDataForPolyline(ctx context.Context, linesRequ
         Chain: []validation.Constraint{	{Target: "samples", Name: validation.InclusiveMaximum, Rule: float64(2000), Chain: nil },
         	{Target: "samples", Name: validation.InclusiveMinimum, Rule: float64(2), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.ElevationClient", "PostDataForPolyline", err.Error())
+        return result, validation.NewError("azmaps.ElevationClient", "PostDataForPolyline", err.Error())
         }
 
         req, err := client.PostDataForPolylinePreparer(ctx, linesRequestBody, samples)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.ElevationClient", "PostDataForPolyline", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.ElevationClient", "PostDataForPolyline", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.PostDataForPolylineSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.ElevationClient", "PostDataForPolyline", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.ElevationClient", "PostDataForPolyline", resp, "Failure sending request")
         return
         }
 
         result, err = client.PostDataForPolylineResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.ElevationClient", "PostDataForPolyline", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.ElevationClient", "PostDataForPolyline", resp, "Failure responding to request")
         return
         }
 

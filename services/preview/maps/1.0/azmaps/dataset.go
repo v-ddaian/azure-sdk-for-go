@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -25,7 +25,7 @@ import (
     "github.com/Azure/go-autorest/tracing"
 )
 
-// DatasetClient is the client for the Dataset methods of the Maps service.
+// DatasetClient is the client for the Dataset methods of the Azmaps service.
 type DatasetClient struct {
     BaseClient
 }
@@ -88,13 +88,13 @@ func (client DatasetClient) CreatePreview(ctx context.Context, conversionID stri
     }
     req, err := client.CreatePreviewPreparer(ctx, conversionID, udid, datasetID, description)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.DatasetClient", "CreatePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.DatasetClient", "CreatePreview", nil , "Failure preparing request")
     return
     }
 
         result, err = client.CreatePreviewSender(req)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.DatasetClient", "CreatePreview", nil , "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.DatasetClient", "CreatePreview", nil , "Failure sending request")
         return
         }
 
@@ -194,20 +194,20 @@ func (client DatasetClient) DeletePreview(ctx context.Context, datasetID string)
     }
     req, err := client.DeletePreviewPreparer(ctx, datasetID)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.DatasetClient", "DeletePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.DatasetClient", "DeletePreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.DeletePreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.DatasetClient", "DeletePreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.DatasetClient", "DeletePreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.DeletePreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.DatasetClient", "DeletePreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.DatasetClient", "DeletePreview", resp, "Failure responding to request")
         return
         }
 
@@ -288,13 +288,13 @@ func (client DatasetClient) ImportPreview(ctx context.Context, datasetID string,
     }
     req, err := client.ImportPreviewPreparer(ctx, datasetID, udid)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.DatasetClient", "ImportPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.DatasetClient", "ImportPreview", nil , "Failure preparing request")
     return
     }
 
         result, err = client.ImportPreviewSender(req)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.DatasetClient", "ImportPreview", nil , "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.DatasetClient", "ImportPreview", nil , "Failure sending request")
         return
         }
 
@@ -447,20 +447,20 @@ func (client DatasetClient) ListPreview(ctx context.Context) (result DatasetList
     }
     req, err := client.ListPreviewPreparer(ctx)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.DatasetClient", "ListPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.DatasetClient", "ListPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.ListPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.DatasetClient", "ListPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.DatasetClient", "ListPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.ListPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.DatasetClient", "ListPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.DatasetClient", "ListPreview", resp, "Failure responding to request")
         return
         }
 

@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //

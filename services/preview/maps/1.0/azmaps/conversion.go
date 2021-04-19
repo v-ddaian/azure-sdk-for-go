@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -25,7 +25,7 @@ import (
     "github.com/Azure/go-autorest/tracing"
 )
 
-// ConversionClient is the client for the Conversion methods of the Maps service.
+// ConversionClient is the client for the Conversion methods of the Azmaps service.
 type ConversionClient struct {
     BaseClient
 }
@@ -103,13 +103,13 @@ func (client ConversionClient) ConvertPreview(ctx context.Context, udid string, 
     }
     req, err := client.ConvertPreviewPreparer(ctx, udid, description)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.ConversionClient", "ConvertPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.ConversionClient", "ConvertPreview", nil , "Failure preparing request")
     return
     }
 
         result, err = client.ConvertPreviewSender(req)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.ConversionClient", "ConvertPreview", nil , "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.ConversionClient", "ConvertPreview", nil , "Failure sending request")
         return
         }
 
@@ -207,20 +207,20 @@ func (client ConversionClient) DeletePreview(ctx context.Context, conversionID s
     }
     req, err := client.DeletePreviewPreparer(ctx, conversionID)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.ConversionClient", "DeletePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.ConversionClient", "DeletePreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.DeletePreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.ConversionClient", "DeletePreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.ConversionClient", "DeletePreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.DeletePreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.ConversionClient", "DeletePreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.ConversionClient", "DeletePreview", resp, "Failure responding to request")
         return
         }
 
@@ -345,20 +345,20 @@ func (client ConversionClient) ListPreview(ctx context.Context) (result Conversi
     }
     req, err := client.ListPreviewPreparer(ctx)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.ConversionClient", "ListPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.ConversionClient", "ListPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.ListPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.ConversionClient", "ListPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.ConversionClient", "ListPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.ListPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.ConversionClient", "ListPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.ConversionClient", "ListPreview", resp, "Failure responding to request")
         return
         }
 

@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -25,7 +25,7 @@ import (
     "github.com/Azure/go-autorest/tracing"
 )
 
-// TilesetClient is the client for the Tileset methods of the Maps service.
+// TilesetClient is the client for the Tileset methods of the Azmaps service.
 type TilesetClient struct {
     BaseClient
 }
@@ -77,13 +77,13 @@ func (client TilesetClient) CreatePreview(ctx context.Context, datasetID string,
     }
     req, err := client.CreatePreviewPreparer(ctx, datasetID, description)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.TilesetClient", "CreatePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.TilesetClient", "CreatePreview", nil , "Failure preparing request")
     return
     }
 
         result, err = client.CreatePreviewSender(req)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.TilesetClient", "CreatePreview", nil , "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.TilesetClient", "CreatePreview", nil , "Failure sending request")
         return
         }
 
@@ -194,20 +194,20 @@ func (client TilesetClient) DeletePreview(ctx context.Context, tilesetID string)
     }
     req, err := client.DeletePreviewPreparer(ctx, tilesetID)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.TilesetClient", "DeletePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.TilesetClient", "DeletePreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.DeletePreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.TilesetClient", "DeletePreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.TilesetClient", "DeletePreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.DeletePreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.TilesetClient", "DeletePreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.TilesetClient", "DeletePreview", resp, "Failure responding to request")
         return
         }
 
@@ -280,20 +280,20 @@ func (client TilesetClient) ListPreview(ctx context.Context) (result TilesetList
     }
     req, err := client.ListPreviewPreparer(ctx)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.TilesetClient", "ListPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.TilesetClient", "ListPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.ListPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.TilesetClient", "ListPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.TilesetClient", "ListPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.ListPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.TilesetClient", "ListPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.TilesetClient", "ListPreview", resp, "Failure responding to request")
         return
         }
 

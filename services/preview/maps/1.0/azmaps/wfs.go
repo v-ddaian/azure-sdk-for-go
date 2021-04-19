@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -26,7 +26,7 @@ import (
     "github.com/Azure/go-autorest/autorest/validation"
 )
 
-// WFSClient is the client for the WFS methods of the Maps service.
+// WFSClient is the client for the WFS methods of the Azmaps service.
 type WFSClient struct {
     BaseClient
 }
@@ -65,20 +65,20 @@ func (client WFSClient) CollectionDefinitionPreview(ctx context.Context, dataset
     }
     req, err := client.CollectionDefinitionPreviewPreparer(ctx, datasetid, collectionID)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WFSClient", "CollectionDefinitionPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "CollectionDefinitionPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.CollectionDefinitionPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "CollectionDefinitionPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "CollectionDefinitionPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.CollectionDefinitionPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "CollectionDefinitionPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "CollectionDefinitionPreview", resp, "Failure responding to request")
         return
         }
 
@@ -155,20 +155,20 @@ func (client WFSClient) CollectionDescriptionPreview(ctx context.Context, datase
     }
     req, err := client.CollectionDescriptionPreviewPreparer(ctx, datasetid, collectionID)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WFSClient", "CollectionDescriptionPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "CollectionDescriptionPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.CollectionDescriptionPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "CollectionDescriptionPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "CollectionDescriptionPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.CollectionDescriptionPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "CollectionDescriptionPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "CollectionDescriptionPreview", resp, "Failure responding to request")
         return
         }
 
@@ -242,20 +242,20 @@ func (client WFSClient) CollectionsDescriptionPreview(ctx context.Context, datas
     }
     req, err := client.CollectionsDescriptionPreviewPreparer(ctx, datasetid)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WFSClient", "CollectionsDescriptionPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "CollectionsDescriptionPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.CollectionsDescriptionPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "CollectionsDescriptionPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "CollectionsDescriptionPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.CollectionsDescriptionPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "CollectionsDescriptionPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "CollectionsDescriptionPreview", resp, "Failure responding to request")
         return
         }
 
@@ -332,20 +332,20 @@ func (client WFSClient) DeleteFeaturePreview(ctx context.Context, datasetid stri
     }
     req, err := client.DeleteFeaturePreviewPreparer(ctx, datasetid, collectionID, featureID)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WFSClient", "DeleteFeaturePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "DeleteFeaturePreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.DeleteFeaturePreviewSender(req)
         if err != nil {
         result.Response = resp
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "DeleteFeaturePreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "DeleteFeaturePreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.DeleteFeaturePreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "DeleteFeaturePreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "DeleteFeaturePreview", resp, "Failure responding to request")
         return
         }
 
@@ -417,20 +417,20 @@ func (client WFSClient) GetFeaturePreview(ctx context.Context, datasetid string,
     }
     req, err := client.GetFeaturePreviewPreparer(ctx, datasetid, collectionID, featureID)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WFSClient", "GetFeaturePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "GetFeaturePreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetFeaturePreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "GetFeaturePreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "GetFeaturePreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetFeaturePreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "GetFeaturePreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "GetFeaturePreview", resp, "Failure responding to request")
         return
         }
 
@@ -528,25 +528,25 @@ func (client WFSClient) GetFeaturesPreview(ctx context.Context, datasetid string
         Chain: []validation.Constraint{	{Target: "limit", Name: validation.InclusiveMaximum, Rule: float64(50), Chain: nil },
         	{Target: "limit", Name: validation.InclusiveMinimum, Rule: float64(1), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.WFSClient", "GetFeaturesPreview", err.Error())
+        return result, validation.NewError("azmaps.WFSClient", "GetFeaturesPreview", err.Error())
         }
 
         req, err := client.GetFeaturesPreviewPreparer(ctx, datasetid, collectionID, limit, bbox, filter)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WFSClient", "GetFeaturesPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "GetFeaturesPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetFeaturesPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "GetFeaturesPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "GetFeaturesPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetFeaturesPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "GetFeaturesPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "GetFeaturesPreview", resp, "Failure responding to request")
         return
         }
 
@@ -632,20 +632,20 @@ func (client WFSClient) GetLandingPagePreview(ctx context.Context, datasetid str
     }
     req, err := client.GetLandingPagePreviewPreparer(ctx, datasetid)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WFSClient", "GetLandingPagePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "GetLandingPagePreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetLandingPagePreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "GetLandingPagePreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "GetLandingPagePreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetLandingPagePreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "GetLandingPagePreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "GetLandingPagePreview", resp, "Failure responding to request")
         return
         }
 
@@ -718,20 +718,20 @@ func (client WFSClient) GetRequirementsClassesPreview(ctx context.Context, datas
     }
     req, err := client.GetRequirementsClassesPreviewPreparer(ctx, datasetid)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WFSClient", "GetRequirementsClassesPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "GetRequirementsClassesPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetRequirementsClassesPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "GetRequirementsClassesPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "GetRequirementsClassesPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetRequirementsClassesPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WFSClient", "GetRequirementsClassesPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WFSClient", "GetRequirementsClassesPreview", resp, "Failure responding to request")
         return
         }
 

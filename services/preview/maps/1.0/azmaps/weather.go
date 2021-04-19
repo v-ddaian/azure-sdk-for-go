@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -25,7 +25,7 @@ import (
     "github.com/Azure/go-autorest/tracing"
 )
 
-// WeatherClient is the client for the Weather methods of the Maps service.
+// WeatherClient is the client for the Weather methods of the Azmaps service.
 type WeatherClient struct {
     BaseClient
 }
@@ -84,20 +84,20 @@ func (client WeatherClient) GetCurrentConditions(ctx context.Context, query stri
     }
     req, err := client.GetCurrentConditionsPreparer(ctx, query, unit, details, duration, language)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetCurrentConditions", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetCurrentConditions", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetCurrentConditionsSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetCurrentConditions", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetCurrentConditions", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetCurrentConditionsResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetCurrentConditions", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetCurrentConditions", resp, "Failure responding to request")
         return
         }
 
@@ -209,20 +209,20 @@ func (client WeatherClient) GetDailyForecast(ctx context.Context, query string, 
     }
     req, err := client.GetDailyForecastPreparer(ctx, query, unit, duration, language)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetDailyForecast", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetDailyForecast", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetDailyForecastSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetDailyForecast", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetDailyForecast", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetDailyForecastResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetDailyForecast", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetDailyForecast", resp, "Failure responding to request")
         return
         }
 
@@ -333,20 +333,20 @@ func (client WeatherClient) GetDailyIndices(ctx context.Context, query string, l
     }
     req, err := client.GetDailyIndicesPreparer(ctx, query, language, duration, indexID, indexGroupID)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetDailyIndices", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetDailyIndices", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetDailyIndicesSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetDailyIndices", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetDailyIndices", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetDailyIndicesResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetDailyIndices", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetDailyIndices", resp, "Failure responding to request")
         return
         }
 
@@ -455,20 +455,20 @@ func (client WeatherClient) GetHourlyForecast(ctx context.Context, query string,
     }
     req, err := client.GetHourlyForecastPreparer(ctx, query, unit, duration, language)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetHourlyForecast", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetHourlyForecast", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetHourlyForecastSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetHourlyForecast", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetHourlyForecast", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetHourlyForecastResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetHourlyForecast", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetHourlyForecast", resp, "Failure responding to request")
         return
         }
 
@@ -570,20 +570,20 @@ func (client WeatherClient) GetMinuteForecast(ctx context.Context, query string,
     }
     req, err := client.GetMinuteForecastPreparer(ctx, query, interval, language)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetMinuteForecast", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetMinuteForecast", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetMinuteForecastSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetMinuteForecast", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetMinuteForecast", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetMinuteForecastResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetMinuteForecast", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetMinuteForecast", resp, "Failure responding to request")
         return
         }
 
@@ -682,20 +682,20 @@ func (client WeatherClient) GetQuarterDayForecast(ctx context.Context, query str
     }
     req, err := client.GetQuarterDayForecastPreparer(ctx, query, unit, duration, language)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetQuarterDayForecast", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetQuarterDayForecast", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetQuarterDayForecastSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetQuarterDayForecast", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetQuarterDayForecast", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetQuarterDayForecastResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetQuarterDayForecast", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetQuarterDayForecast", resp, "Failure responding to request")
         return
         }
 
@@ -798,20 +798,20 @@ func (client WeatherClient) GetSevereWeatherAlerts(ctx context.Context, query st
     }
     req, err := client.GetSevereWeatherAlertsPreparer(ctx, query, language, details)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetSevereWeatherAlerts", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetSevereWeatherAlerts", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetSevereWeatherAlertsSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetSevereWeatherAlerts", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetSevereWeatherAlerts", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetSevereWeatherAlertsResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetSevereWeatherAlerts", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetSevereWeatherAlerts", resp, "Failure responding to request")
         return
         }
 
@@ -935,20 +935,20 @@ func (client WeatherClient) GetWeatherAlongRoute(ctx context.Context, query stri
     }
     req, err := client.GetWeatherAlongRoutePreparer(ctx, query, language)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetWeatherAlongRoute", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetWeatherAlongRoute", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetWeatherAlongRouteSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetWeatherAlongRoute", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetWeatherAlongRoute", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetWeatherAlongRouteResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.WeatherClient", "GetWeatherAlongRoute", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.WeatherClient", "GetWeatherAlongRoute", resp, "Failure responding to request")
         return
         }
 

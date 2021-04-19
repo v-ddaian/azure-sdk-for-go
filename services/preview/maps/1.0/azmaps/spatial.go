@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -26,7 +26,7 @@ import (
     "github.com/Azure/go-autorest/autorest/validation"
 )
 
-// SpatialClient is the client for the Spatial methods of the Maps service.
+// SpatialClient is the client for the Spatial methods of the Azmaps service.
 type SpatialClient struct {
     BaseClient
 }
@@ -84,20 +84,20 @@ func (client SpatialClient) GetBuffer(ctx context.Context, udid string, distance
     }
     req, err := client.GetBufferPreparer(ctx, udid, distances)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SpatialClient", "GetBuffer", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "GetBuffer", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetBufferSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "GetBuffer", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "GetBuffer", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetBufferResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "GetBuffer", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "GetBuffer", resp, "Failure responding to request")
         return
         }
 
@@ -187,20 +187,20 @@ func (client SpatialClient) GetClosestPoint(ctx context.Context, udid string, la
     }
     req, err := client.GetClosestPointPreparer(ctx, udid, lat, lon, numberOfClosestPoints)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SpatialClient", "GetClosestPoint", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "GetClosestPoint", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetClosestPointSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "GetClosestPoint", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "GetClosestPoint", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetClosestPointResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "GetClosestPoint", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "GetClosestPoint", resp, "Failure responding to request")
         return
         }
 
@@ -339,25 +339,25 @@ func (client SpatialClient) GetGeofence(ctx context.Context, deviceID string, ud
         Chain: []validation.Constraint{	{Target: "searchBuffer", Name: validation.InclusiveMaximum, Rule: float64(500), Chain: nil },
         	{Target: "searchBuffer", Name: validation.InclusiveMinimum, Rule: float64(0), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.SpatialClient", "GetGeofence", err.Error())
+        return result, validation.NewError("azmaps.SpatialClient", "GetGeofence", err.Error())
         }
 
         req, err := client.GetGeofencePreparer(ctx, deviceID, udID, lat, lon, z, userTime, searchBuffer, isAsync, mode)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SpatialClient", "GetGeofence", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "GetGeofence", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetGeofenceSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "GetGeofence", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "GetGeofence", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetGeofenceResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "GetGeofence", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "GetGeofence", resp, "Failure responding to request")
         return
         }
 
@@ -454,20 +454,20 @@ func (client SpatialClient) GetGreatCircleDistance(ctx context.Context, query st
     }
     req, err := client.GetGreatCircleDistancePreparer(ctx, query)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SpatialClient", "GetGreatCircleDistance", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "GetGreatCircleDistance", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetGreatCircleDistanceSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "GetGreatCircleDistance", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "GetGreatCircleDistance", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetGreatCircleDistanceResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "GetGreatCircleDistance", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "GetGreatCircleDistance", resp, "Failure responding to request")
         return
         }
 
@@ -557,20 +557,20 @@ func (client SpatialClient) GetPointInPolygon(ctx context.Context, udid string, 
     }
     req, err := client.GetPointInPolygonPreparer(ctx, udid, lat, lon)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SpatialClient", "GetPointInPolygon", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "GetPointInPolygon", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetPointInPolygonSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "GetPointInPolygon", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "GetPointInPolygon", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetPointInPolygonResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "GetPointInPolygon", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "GetPointInPolygon", resp, "Failure responding to request")
         return
         }
 
@@ -655,25 +655,25 @@ func (client SpatialClient) PostBuffer(ctx context.Context, bufferRequestBody Bu
         Chain: []validation.Constraint{	{Target: "bufferRequestBody.Geometries.Type", Name: validation.Null, Rule: true, Chain: nil },
         	{Target: "bufferRequestBody.Geometries.Features", Name: validation.Null, Rule: true, Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.SpatialClient", "PostBuffer", err.Error())
+        return result, validation.NewError("azmaps.SpatialClient", "PostBuffer", err.Error())
         }
 
         req, err := client.PostBufferPreparer(ctx, bufferRequestBody)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SpatialClient", "PostBuffer", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "PostBuffer", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.PostBufferSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "PostBuffer", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "PostBuffer", resp, "Failure sending request")
         return
         }
 
         result, err = client.PostBufferResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "PostBuffer", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "PostBuffer", resp, "Failure responding to request")
         return
         }
 
@@ -756,25 +756,25 @@ func (client SpatialClient) PostClosestPoint(ctx context.Context, lat float64, l
         { TargetValue: closestPointRequestBody,
          Constraints: []validation.Constraint{	{Target: "closestPointRequestBody.Type", Name: validation.Null, Rule: true, Chain: nil },
         	{Target: "closestPointRequestBody.Features", Name: validation.Null, Rule: true, Chain: nil }}}}); err != nil {
-        return result, validation.NewError("maps.SpatialClient", "PostClosestPoint", err.Error())
+        return result, validation.NewError("azmaps.SpatialClient", "PostClosestPoint", err.Error())
         }
 
         req, err := client.PostClosestPointPreparer(ctx, lat, lon, closestPointRequestBody, numberOfClosestPoints)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SpatialClient", "PostClosestPoint", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "PostClosestPoint", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.PostClosestPointSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "PostClosestPoint", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "PostClosestPoint", resp, "Failure sending request")
         return
         }
 
         result, err = client.PostClosestPointResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "PostClosestPoint", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "PostClosestPoint", resp, "Failure responding to request")
         return
         }
 
@@ -880,25 +880,25 @@ func (client SpatialClient) PostGeofence(ctx context.Context, deviceID string, l
         { TargetValue: searchGeofenceRequestBody,
          Constraints: []validation.Constraint{	{Target: "searchGeofenceRequestBody.Type", Name: validation.Null, Rule: true, Chain: nil },
         	{Target: "searchGeofenceRequestBody.Features", Name: validation.Null, Rule: true, Chain: nil }}}}); err != nil {
-        return result, validation.NewError("maps.SpatialClient", "PostGeofence", err.Error())
+        return result, validation.NewError("azmaps.SpatialClient", "PostGeofence", err.Error())
         }
 
         req, err := client.PostGeofencePreparer(ctx, deviceID, lat, lon, searchGeofenceRequestBody, z, userTime, searchBuffer, isAsync, mode)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SpatialClient", "PostGeofence", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "PostGeofence", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.PostGeofenceSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "PostGeofence", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "PostGeofence", resp, "Failure sending request")
         return
         }
 
         result, err = client.PostGeofenceResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "PostGeofence", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "PostGeofence", resp, "Failure responding to request")
         return
         }
 
@@ -1002,25 +1002,25 @@ func (client SpatialClient) PostPointInPolygon(ctx context.Context, lat float64,
         { TargetValue: pointInPolygonRequestBody,
          Constraints: []validation.Constraint{	{Target: "pointInPolygonRequestBody.Type", Name: validation.Null, Rule: true, Chain: nil },
         	{Target: "pointInPolygonRequestBody.Features", Name: validation.Null, Rule: true, Chain: nil }}}}); err != nil {
-        return result, validation.NewError("maps.SpatialClient", "PostPointInPolygon", err.Error())
+        return result, validation.NewError("azmaps.SpatialClient", "PostPointInPolygon", err.Error())
         }
 
         req, err := client.PostPointInPolygonPreparer(ctx, lat, lon, pointInPolygonRequestBody)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SpatialClient", "PostPointInPolygon", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "PostPointInPolygon", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.PostPointInPolygonSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "PostPointInPolygon", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "PostPointInPolygon", resp, "Failure sending request")
         return
         }
 
         result, err = client.PostPointInPolygonResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SpatialClient", "PostPointInPolygon", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SpatialClient", "PostPointInPolygon", resp, "Failure responding to request")
         return
         }
 

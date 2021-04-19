@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -27,7 +27,7 @@ import (
     "github.com/Azure/go-autorest/autorest/date"
 )
 
-// RouteClient is the client for the Route methods of the Maps service.
+// RouteClient is the client for the Route methods of the Azmaps service.
 type RouteClient struct {
     BaseClient
 }
@@ -332,25 +332,25 @@ func (client RouteClient) GetRouteDirections(ctx context.Context, formatParamete
         Chain: []validation.Constraint{	{Target: "vehicleHeading", Name: validation.InclusiveMaximum, Rule: int64(359), Chain: nil },
         	{Target: "vehicleHeading", Name: validation.InclusiveMinimum, Rule: int64(0), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.RouteClient", "GetRouteDirections", err.Error())
+        return result, validation.NewError("azmaps.RouteClient", "GetRouteDirections", err.Error())
         }
 
         req, err := client.GetRouteDirectionsPreparer(ctx, formatParameter, query, maxAlternatives, alternativeType, minDeviationDistance, arriveAt, departAt, minDeviationTime, instructionsType, language, computeBestOrder, routeRepresentation, computeTravelTimeFor, vehicleHeading, report, sectionType, vehicleAxleWeight, vehicleWidth, vehicleHeight, vehicleLength, vehicleMaxSpeed, vehicleWeight, vehicleCommercial, windingness, hilliness, travelMode, avoid, traffic, routeType, vehicleLoadType, vehicleEngineType, constantSpeedConsumptionInLitersPerHundredkm, currentFuelInLiters, auxiliaryPowerInLitersPerHour, fuelEnergyDensityInMJoulesPerLiter, accelerationEfficiency, decelerationEfficiency, uphillEfficiency, downhillEfficiency, constantSpeedConsumptionInkWhPerHundredkm, currentChargeInkWh, maxChargeInkWh, auxiliaryPowerInkW)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.RouteClient", "GetRouteDirections", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.RouteClient", "GetRouteDirections", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetRouteDirectionsSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.RouteClient", "GetRouteDirections", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.RouteClient", "GetRouteDirections", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetRouteDirectionsResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.RouteClient", "GetRouteDirections", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.RouteClient", "GetRouteDirections", resp, "Failure responding to request")
         return
         }
 
@@ -796,20 +796,20 @@ func (client RouteClient) GetRouteRange(ctx context.Context, formatParameter Tex
     }
     req, err := client.GetRouteRangePreparer(ctx, formatParameter, query, fuelBudgetInLiters, energyBudgetInkWh, timeBudgetInSec, distanceBudgetInMeters, departAt, routeType, traffic, avoid, travelMode, hilliness, windingness, vehicleAxleWeight, vehicleWidth, vehicleHeight, vehicleLength, vehicleMaxSpeed, vehicleWeight, vehicleCommercial, vehicleLoadType, vehicleEngineType, constantSpeedConsumptionInLitersPerHundredkm, currentFuelInLiters, auxiliaryPowerInLitersPerHour, fuelEnergyDensityInMJoulesPerLiter, accelerationEfficiency, decelerationEfficiency, uphillEfficiency, downhillEfficiency, constantSpeedConsumptionInkWhPerHundredkm, currentChargeInkWh, maxChargeInkWh, auxiliaryPowerInkW)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.RouteClient", "GetRouteRange", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.RouteClient", "GetRouteRange", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetRouteRangeSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.RouteClient", "GetRouteRange", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.RouteClient", "GetRouteRange", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetRouteRangeResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.RouteClient", "GetRouteRange", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.RouteClient", "GetRouteRange", resp, "Failure responding to request")
         return
         }
 
@@ -1297,25 +1297,25 @@ func (client RouteClient) PostRouteDirections(ctx context.Context, formatParamet
         	{Target: "routeDirectionsRequestBody.AvoidAreas", Name: validation.Null, Rule: false ,
         Chain: []validation.Constraint{	{Target: "routeDirectionsRequestBody.AvoidAreas.Coordinates", Name: validation.Null, Rule: true, Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.RouteClient", "PostRouteDirections", err.Error())
+        return result, validation.NewError("azmaps.RouteClient", "PostRouteDirections", err.Error())
         }
 
         req, err := client.PostRouteDirectionsPreparer(ctx, formatParameter, query, routeDirectionsRequestBody, maxAlternatives, alternativeType, minDeviationDistance, minDeviationTime, instructionsType, language, computeBestOrder, routeRepresentation, computeTravelTimeFor, vehicleHeading, report, sectionType, arriveAt, departAt, vehicleAxleWeight, vehicleLength, vehicleHeight, vehicleWidth, vehicleMaxSpeed, vehicleWeight, vehicleCommercial, windingness, hilliness, travelMode, avoid, traffic, routeType, vehicleLoadType, vehicleEngineType, constantSpeedConsumptionInLitersPerHundredkm, currentFuelInLiters, auxiliaryPowerInLitersPerHour, fuelEnergyDensityInMJoulesPerLiter, accelerationEfficiency, decelerationEfficiency, uphillEfficiency, downhillEfficiency, constantSpeedConsumptionInkWhPerHundredkm, currentChargeInkWh, maxChargeInkWh, auxiliaryPowerInkW)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.RouteClient", "PostRouteDirections", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.RouteClient", "PostRouteDirections", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.PostRouteDirectionsSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.RouteClient", "PostRouteDirections", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.RouteClient", "PostRouteDirections", resp, "Failure sending request")
         return
         }
 
         result, err = client.PostRouteDirectionsResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.RouteClient", "PostRouteDirections", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.RouteClient", "PostRouteDirections", resp, "Failure responding to request")
         return
         }
 
@@ -1733,13 +1733,13 @@ func (client RouteClient) PostRouteDirectionsBatch(ctx context.Context, routeDir
     }
     req, err := client.PostRouteDirectionsBatchPreparer(ctx, routeDirectionsBatchRequestBody)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.RouteClient", "PostRouteDirectionsBatch", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.RouteClient", "PostRouteDirectionsBatch", nil , "Failure preparing request")
     return
     }
 
         result, err = client.PostRouteDirectionsBatchSender(req)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.RouteClient", "PostRouteDirectionsBatch", nil , "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.RouteClient", "PostRouteDirectionsBatch", nil , "Failure sending request")
         return
         }
 
@@ -1975,18 +1975,18 @@ func (client RouteClient) PostRouteMatrix(ctx context.Context, routeMatrixBody R
         	{Target: "routeMatrixBody.Destinations", Name: validation.Null, Rule: false ,
         Chain: []validation.Constraint{	{Target: "routeMatrixBody.Destinations.Coordinates", Name: validation.Null, Rule: true, Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.RouteClient", "PostRouteMatrix", err.Error())
+        return result, validation.NewError("azmaps.RouteClient", "PostRouteMatrix", err.Error())
         }
 
         req, err := client.PostRouteMatrixPreparer(ctx, routeMatrixBody, waitForResults, computeTravelTimeFor, sectionType, arriveAt, departAt, vehicleAxleWeight, vehicleLength, vehicleHeight, vehicleWidth, vehicleMaxSpeed, vehicleWeight, windingness, hilliness, travelMode, avoid, traffic, routeType, vehicleLoadType)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.RouteClient", "PostRouteMatrix", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.RouteClient", "PostRouteMatrix", nil , "Failure preparing request")
     return
     }
 
         result, err = client.PostRouteMatrixSender(req)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.RouteClient", "PostRouteMatrix", nil , "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.RouteClient", "PostRouteMatrix", nil , "Failure sending request")
         return
         }
 

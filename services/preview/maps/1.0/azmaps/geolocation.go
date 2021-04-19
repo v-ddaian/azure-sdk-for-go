@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -25,7 +25,7 @@ import (
     "github.com/Azure/go-autorest/tracing"
 )
 
-// GeolocationClient is the client for the Geolocation methods of the Maps service.
+// GeolocationClient is the client for the Geolocation methods of the Azmaps service.
 type GeolocationClient struct {
     BaseClient
 }
@@ -64,20 +64,20 @@ func (client GeolocationClient) GetIPToLocationPreview(ctx context.Context, IP s
     }
     req, err := client.GetIPToLocationPreviewPreparer(ctx, IP)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.GeolocationClient", "GetIPToLocationPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.GeolocationClient", "GetIPToLocationPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetIPToLocationPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.GeolocationClient", "GetIPToLocationPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.GeolocationClient", "GetIPToLocationPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetIPToLocationPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.GeolocationClient", "GetIPToLocationPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.GeolocationClient", "GetIPToLocationPreview", resp, "Failure responding to request")
         return
         }
 

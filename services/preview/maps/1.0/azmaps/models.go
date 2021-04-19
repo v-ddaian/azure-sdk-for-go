@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -28,7 +28,7 @@ import (
 )
 
 // The package's fully qualified name.
-const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
+const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/azmaps"
 
             // Agency details of the agency. Returned if specified in the request.
             type Agency struct {
@@ -420,18 +420,18 @@ const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
             var done bool
             done, err = future.DoneWithContext(context.Background(), client)
             if err != nil {
-                err = autorest.NewErrorWithError(err, "maps.ConversionConvertPreviewFuture", "Result", future.Response(), "Polling failure")
+                err = autorest.NewErrorWithError(err, "azmaps.ConversionConvertPreviewFuture", "Result", future.Response(), "Polling failure")
                 return
             }
             if !done {
-                err = azure.NewAsyncOpIncompleteError("maps.ConversionConvertPreviewFuture")
+                err = azure.NewAsyncOpIncompleteError("azmaps.ConversionConvertPreviewFuture")
                 return
             }
             sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
             if lror.Response.Response, err = future.GetResult(sender); err == nil && lror.Response.Response.StatusCode != http.StatusNoContent {
             lror, err = client.ConvertPreviewResponder(lror.Response.Response)
             if err != nil {
-            err = autorest.NewErrorWithError(err, "maps.ConversionConvertPreviewFuture", "Result", lror.Response.Response, "Failure responding to request")
+            err = autorest.NewErrorWithError(err, "azmaps.ConversionConvertPreviewFuture", "Result", lror.Response.Response, "Failure responding to request")
             }
             }
             return
@@ -695,26 +695,6 @@ const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
             Results *[]DailyIndex `json:"results,omitempty"`
             }
 
-            // DataDetailInfo detail information for the data.
-            type DataDetailInfo struct {
-            // Udid - READ-ONLY; The unique data id for the data.
-            Udid *string `json:"udid,omitempty"`
-            // Location - READ-ONLY; The location of the data. Execute a HTTP `GET` on this location to download the data.
-            Location *string `json:"location,omitempty"`
-            // SizeInBytes - READ-ONLY; The size of the content in bytes.
-            SizeInBytes *int64 `json:"sizeInBytes,omitempty"`
-            // UploadStatus - READ-ONLY; The current upload status of the content.
-            UploadStatus *string `json:"uploadStatus,omitempty"`
-            }
-
-            // DataListResponse the response model for the Data List API. Returns a list of all the previously uploaded
-            // data.
-            type DataListResponse struct {
-            autorest.Response `json:"-"`
-            // MapDataList - READ-ONLY; A list of all the previously uploaded data.
-            MapDataList *[]DataDetailInfo `json:"mapDataList,omitempty"`
-            }
-
             // DatasetCreatePreviewFuture an abstraction for monitoring and retrieving the results of a long-running
             // operation.
             type DatasetCreatePreviewFuture struct {
@@ -738,18 +718,18 @@ const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
             var done bool
             done, err = future.DoneWithContext(context.Background(), client)
             if err != nil {
-                err = autorest.NewErrorWithError(err, "maps.DatasetCreatePreviewFuture", "Result", future.Response(), "Polling failure")
+                err = autorest.NewErrorWithError(err, "azmaps.DatasetCreatePreviewFuture", "Result", future.Response(), "Polling failure")
                 return
             }
             if !done {
-                err = azure.NewAsyncOpIncompleteError("maps.DatasetCreatePreviewFuture")
+                err = azure.NewAsyncOpIncompleteError("azmaps.DatasetCreatePreviewFuture")
                 return
             }
             sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
             if lror.Response.Response, err = future.GetResult(sender); err == nil && lror.Response.Response.StatusCode != http.StatusNoContent {
             lror, err = client.CreatePreviewResponder(lror.Response.Response)
             if err != nil {
-            err = autorest.NewErrorWithError(err, "maps.DatasetCreatePreviewFuture", "Result", lror.Response.Response, "Failure responding to request")
+            err = autorest.NewErrorWithError(err, "azmaps.DatasetCreatePreviewFuture", "Result", lror.Response.Response, "Failure responding to request")
             }
             }
             return
@@ -800,18 +780,18 @@ const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
             var done bool
             done, err = future.DoneWithContext(context.Background(), client)
             if err != nil {
-                err = autorest.NewErrorWithError(err, "maps.DatasetImportPreviewFuture", "Result", future.Response(), "Polling failure")
+                err = autorest.NewErrorWithError(err, "azmaps.DatasetImportPreviewFuture", "Result", future.Response(), "Polling failure")
                 return
             }
             if !done {
-                err = azure.NewAsyncOpIncompleteError("maps.DatasetImportPreviewFuture")
+                err = azure.NewAsyncOpIncompleteError("azmaps.DatasetImportPreviewFuture")
                 return
             }
             sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
             if lror.Response.Response, err = future.GetResult(sender); err == nil && lror.Response.Response.StatusCode != http.StatusNoContent {
             lror, err = client.ImportPreviewResponder(lror.Response.Response)
             if err != nil {
-            err = autorest.NewErrorWithError(err, "maps.DatasetImportPreviewFuture", "Result", lror.Response.Response, "Failure responding to request")
+            err = autorest.NewErrorWithError(err, "azmaps.DatasetImportPreviewFuture", "Result", lror.Response.Response, "Failure responding to request")
             }
             }
             return
@@ -873,18 +853,18 @@ const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
             var done bool
             done, err = future.DoneWithContext(context.Background(), client)
             if err != nil {
-                err = autorest.NewErrorWithError(err, "maps.DataUpdatePreviewFuture", "Result", future.Response(), "Polling failure")
+                err = autorest.NewErrorWithError(err, "azmaps.DataUpdatePreviewFuture", "Result", future.Response(), "Polling failure")
                 return
             }
             if !done {
-                err = azure.NewAsyncOpIncompleteError("maps.DataUpdatePreviewFuture")
+                err = azure.NewAsyncOpIncompleteError("azmaps.DataUpdatePreviewFuture")
                 return
             }
             sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
             if lror.Response.Response, err = future.GetResult(sender); err == nil && lror.Response.Response.StatusCode != http.StatusNoContent {
             lror, err = client.UpdatePreviewResponder(lror.Response.Response)
             if err != nil {
-            err = autorest.NewErrorWithError(err, "maps.DataUpdatePreviewFuture", "Result", lror.Response.Response, "Failure responding to request")
+            err = autorest.NewErrorWithError(err, "azmaps.DataUpdatePreviewFuture", "Result", lror.Response.Response, "Failure responding to request")
             }
             }
             return
@@ -913,18 +893,18 @@ const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
             var done bool
             done, err = future.DoneWithContext(context.Background(), client)
             if err != nil {
-                err = autorest.NewErrorWithError(err, "maps.DataUploadPreviewFuture", "Result", future.Response(), "Polling failure")
+                err = autorest.NewErrorWithError(err, "azmaps.DataUploadPreviewFuture", "Result", future.Response(), "Polling failure")
                 return
             }
             if !done {
-                err = azure.NewAsyncOpIncompleteError("maps.DataUploadPreviewFuture")
+                err = azure.NewAsyncOpIncompleteError("azmaps.DataUploadPreviewFuture")
                 return
             }
             sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
             if lror.Response.Response, err = future.GetResult(sender); err == nil && lror.Response.Response.StatusCode != http.StatusNoContent {
             lror, err = client.UploadPreviewResponder(lror.Response.Response)
             if err != nil {
-            err = autorest.NewErrorWithError(err, "maps.DataUploadPreviewFuture", "Result", lror.Response.Response, "Failure responding to request")
+            err = autorest.NewErrorWithError(err, "azmaps.DataUploadPreviewFuture", "Result", lror.Response.Response, "Failure responding to request")
             }
             }
             return
@@ -1766,6 +1746,26 @@ const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
                 return json.Marshal(objectMap)
         }
 
+            // MapDataDetailInfo detail information for the data.
+            type MapDataDetailInfo struct {
+            // Udid - READ-ONLY; The unique data id for the data.
+            Udid *string `json:"udid,omitempty"`
+            // Location - READ-ONLY; The location of the data. Execute a HTTP `GET` on this location to download the data.
+            Location *string `json:"location,omitempty"`
+            // SizeInBytes - READ-ONLY; The size of the content in bytes.
+            SizeInBytes *int64 `json:"sizeInBytes,omitempty"`
+            // UploadStatus - READ-ONLY; The current upload status of the content.
+            UploadStatus *string `json:"uploadStatus,omitempty"`
+            }
+
+            // MapDataListResponse the response model for the Data List API. Returns a list of all the previously
+            // uploaded data.
+            type MapDataListResponse struct {
+            autorest.Response `json:"-"`
+            // MapDataList - READ-ONLY; A list of all the previously uploaded data.
+            MapDataList *[]MapDataDetailInfo `json:"mapDataList,omitempty"`
+            }
+
             // MetroAreaInfoResponse this object is returned from a successful Metro Area Info call.
             type MetroAreaInfoResponse struct {
             autorest.Response `json:"-"`
@@ -2530,18 +2530,18 @@ const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
             var done bool
             done, err = future.DoneWithContext(context.Background(), client)
             if err != nil {
-                err = autorest.NewErrorWithError(err, "maps.RoutePostRouteDirectionsBatchFuture", "Result", future.Response(), "Polling failure")
+                err = autorest.NewErrorWithError(err, "azmaps.RoutePostRouteDirectionsBatchFuture", "Result", future.Response(), "Polling failure")
                 return
             }
             if !done {
-                err = azure.NewAsyncOpIncompleteError("maps.RoutePostRouteDirectionsBatchFuture")
+                err = azure.NewAsyncOpIncompleteError("azmaps.RoutePostRouteDirectionsBatchFuture")
                 return
             }
             sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
             if br.Response.Response, err = future.GetResult(sender); err == nil && br.Response.Response.StatusCode != http.StatusNoContent {
             br, err = client.PostRouteDirectionsBatchResponder(br.Response.Response)
             if err != nil {
-            err = autorest.NewErrorWithError(err, "maps.RoutePostRouteDirectionsBatchFuture", "Result", br.Response.Response, "Failure responding to request")
+            err = autorest.NewErrorWithError(err, "azmaps.RoutePostRouteDirectionsBatchFuture", "Result", br.Response.Response, "Failure responding to request")
             }
             }
             return
@@ -2570,18 +2570,18 @@ const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
             var done bool
             done, err = future.DoneWithContext(context.Background(), client)
             if err != nil {
-                err = autorest.NewErrorWithError(err, "maps.RoutePostRouteMatrixFuture", "Result", future.Response(), "Polling failure")
+                err = autorest.NewErrorWithError(err, "azmaps.RoutePostRouteMatrixFuture", "Result", future.Response(), "Polling failure")
                 return
             }
             if !done {
-                err = azure.NewAsyncOpIncompleteError("maps.RoutePostRouteMatrixFuture")
+                err = azure.NewAsyncOpIncompleteError("azmaps.RoutePostRouteMatrixFuture")
                 return
             }
             sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
             if rmr.Response.Response, err = future.GetResult(sender); err == nil && rmr.Response.Response.StatusCode != http.StatusNoContent {
             rmr, err = client.PostRouteMatrixResponder(rmr.Response.Response)
             if err != nil {
-            err = autorest.NewErrorWithError(err, "maps.RoutePostRouteMatrixFuture", "Result", rmr.Response.Response, "Failure responding to request")
+            err = autorest.NewErrorWithError(err, "azmaps.RoutePostRouteMatrixFuture", "Result", rmr.Response.Response, "Failure responding to request")
             }
             }
             return
@@ -3691,18 +3691,18 @@ const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
             var done bool
             done, err = future.DoneWithContext(context.Background(), client)
             if err != nil {
-                err = autorest.NewErrorWithError(err, "maps.SearchPostSearchAddressBatchFuture", "Result", future.Response(), "Polling failure")
+                err = autorest.NewErrorWithError(err, "azmaps.SearchPostSearchAddressBatchFuture", "Result", future.Response(), "Polling failure")
                 return
             }
             if !done {
-                err = azure.NewAsyncOpIncompleteError("maps.SearchPostSearchAddressBatchFuture")
+                err = azure.NewAsyncOpIncompleteError("azmaps.SearchPostSearchAddressBatchFuture")
                 return
             }
             sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
             if br.Response.Response, err = future.GetResult(sender); err == nil && br.Response.Response.StatusCode != http.StatusNoContent {
             br, err = client.PostSearchAddressBatchResponder(br.Response.Response)
             if err != nil {
-            err = autorest.NewErrorWithError(err, "maps.SearchPostSearchAddressBatchFuture", "Result", br.Response.Response, "Failure responding to request")
+            err = autorest.NewErrorWithError(err, "azmaps.SearchPostSearchAddressBatchFuture", "Result", br.Response.Response, "Failure responding to request")
             }
             }
             return
@@ -3731,18 +3731,18 @@ const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
             var done bool
             done, err = future.DoneWithContext(context.Background(), client)
             if err != nil {
-                err = autorest.NewErrorWithError(err, "maps.SearchPostSearchAddressReverseBatchFuture", "Result", future.Response(), "Polling failure")
+                err = autorest.NewErrorWithError(err, "azmaps.SearchPostSearchAddressReverseBatchFuture", "Result", future.Response(), "Polling failure")
                 return
             }
             if !done {
-                err = azure.NewAsyncOpIncompleteError("maps.SearchPostSearchAddressReverseBatchFuture")
+                err = azure.NewAsyncOpIncompleteError("azmaps.SearchPostSearchAddressReverseBatchFuture")
                 return
             }
             sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
             if br.Response.Response, err = future.GetResult(sender); err == nil && br.Response.Response.StatusCode != http.StatusNoContent {
             br, err = client.PostSearchAddressReverseBatchResponder(br.Response.Response)
             if err != nil {
-            err = autorest.NewErrorWithError(err, "maps.SearchPostSearchAddressReverseBatchFuture", "Result", br.Response.Response, "Failure responding to request")
+            err = autorest.NewErrorWithError(err, "azmaps.SearchPostSearchAddressReverseBatchFuture", "Result", br.Response.Response, "Failure responding to request")
             }
             }
             return
@@ -3771,18 +3771,18 @@ const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
             var done bool
             done, err = future.DoneWithContext(context.Background(), client)
             if err != nil {
-                err = autorest.NewErrorWithError(err, "maps.SearchPostSearchFuzzyBatchFuture", "Result", future.Response(), "Polling failure")
+                err = autorest.NewErrorWithError(err, "azmaps.SearchPostSearchFuzzyBatchFuture", "Result", future.Response(), "Polling failure")
                 return
             }
             if !done {
-                err = azure.NewAsyncOpIncompleteError("maps.SearchPostSearchFuzzyBatchFuture")
+                err = azure.NewAsyncOpIncompleteError("azmaps.SearchPostSearchFuzzyBatchFuture")
                 return
             }
             sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
             if br.Response.Response, err = future.GetResult(sender); err == nil && br.Response.Response.StatusCode != http.StatusNoContent {
             br, err = client.PostSearchFuzzyBatchResponder(br.Response.Response)
             if err != nil {
-            err = autorest.NewErrorWithError(err, "maps.SearchPostSearchFuzzyBatchFuture", "Result", br.Response.Response, "Failure responding to request")
+            err = autorest.NewErrorWithError(err, "azmaps.SearchPostSearchFuzzyBatchFuture", "Result", br.Response.Response, "Failure responding to request")
             }
             }
             return
@@ -4313,18 +4313,18 @@ const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
             var done bool
             done, err = future.DoneWithContext(context.Background(), client)
             if err != nil {
-                err = autorest.NewErrorWithError(err, "maps.TilesetCreatePreviewFuture", "Result", future.Response(), "Polling failure")
+                err = autorest.NewErrorWithError(err, "azmaps.TilesetCreatePreviewFuture", "Result", future.Response(), "Polling failure")
                 return
             }
             if !done {
-                err = azure.NewAsyncOpIncompleteError("maps.TilesetCreatePreviewFuture")
+                err = azure.NewAsyncOpIncompleteError("azmaps.TilesetCreatePreviewFuture")
                 return
             }
             sender := autorest.DecorateSender(client, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
             if lror.Response.Response, err = future.GetResult(sender); err == nil && lror.Response.Response.StatusCode != http.StatusNoContent {
             lror, err = client.CreatePreviewResponder(lror.Response.Response)
             if err != nil {
-            err = autorest.NewErrorWithError(err, "maps.TilesetCreatePreviewFuture", "Result", lror.Response.Response, "Failure responding to request")
+            err = autorest.NewErrorWithError(err, "azmaps.TilesetCreatePreviewFuture", "Result", lror.Response.Response, "Failure responding to request")
             }
             }
             return
@@ -4640,8 +4640,8 @@ const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
             CopyrightIds *string `json:"copyrightIds,omitempty"`
             // Version - READ-ONLY; @Version property
             Version *string `json:"@version,omitempty"`
-            // MapsProperty - READ-ONLY; @maps property
-            MapsProperty *string `json:"@maps,omitempty"`
+            // Maps - READ-ONLY; @maps property
+            Maps *string `json:"@maps,omitempty"`
             }
 
             // TrafficIncidentViewportResultViewpRespTrafficState traffic State array
@@ -4729,8 +4729,8 @@ const fqdn = "$(go-sdk-folder)/services/preview/maps/1.0/maps"
             Udid *string `json:"udid,omitempty"`
             }
 
-            // VersionMaps ...
-            type VersionMaps struct {
+            // VersionAzmaps ...
+            type VersionAzmaps struct {
             // Version - version number of the dataset
             Version *string `json:"version,omitempty"`
             // RevisionTimestamp - timestamp of the revision

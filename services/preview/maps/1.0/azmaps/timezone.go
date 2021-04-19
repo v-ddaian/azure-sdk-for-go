@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -26,7 +26,7 @@ import (
     "github.com/Azure/go-autorest/autorest/date"
 )
 
-// TimezoneClient is the client for the Timezone methods of the Maps service.
+// TimezoneClient is the client for the Timezone methods of the Azmaps service.
 type TimezoneClient struct {
     BaseClient
 }
@@ -75,20 +75,20 @@ func (client TimezoneClient) GetTimezoneByCoordinates(ctx context.Context, query
     }
     req, err := client.GetTimezoneByCoordinatesPreparer(ctx, query, acceptLanguage, options, timeStamp, transitionsFrom, transitionsYears)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneByCoordinates", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneByCoordinates", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetTimezoneByCoordinatesSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneByCoordinates", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneByCoordinates", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetTimezoneByCoordinatesResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneByCoordinates", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneByCoordinates", resp, "Failure responding to request")
         return
         }
 
@@ -187,20 +187,20 @@ func (client TimezoneClient) GetTimezoneByID(ctx context.Context, query string, 
     }
     req, err := client.GetTimezoneByIDPreparer(ctx, query, acceptLanguage, options, timeStamp, transitionsFrom, transitionsYears)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneByID", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneByID", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetTimezoneByIDSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneByID", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneByID", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetTimezoneByIDResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneByID", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneByID", resp, "Failure responding to request")
         return
         }
 
@@ -289,20 +289,20 @@ func (client TimezoneClient) GetTimezoneEnumIANA(ctx context.Context) (result Li
     }
     req, err := client.GetTimezoneEnumIANAPreparer(ctx)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneEnumIANA", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneEnumIANA", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetTimezoneEnumIANASender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneEnumIANA", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneEnumIANA", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetTimezoneEnumIANAResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneEnumIANA", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneEnumIANA", resp, "Failure responding to request")
         return
         }
 
@@ -373,20 +373,20 @@ func (client TimezoneClient) GetTimezoneEnumWindows(ctx context.Context) (result
     }
     req, err := client.GetTimezoneEnumWindowsPreparer(ctx)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneEnumWindows", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneEnumWindows", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetTimezoneEnumWindowsSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneEnumWindows", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneEnumWindows", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetTimezoneEnumWindowsResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneEnumWindows", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneEnumWindows", resp, "Failure responding to request")
         return
         }
 
@@ -457,20 +457,20 @@ func (client TimezoneClient) GetTimezoneIANAVersion(ctx context.Context) (result
     }
     req, err := client.GetTimezoneIANAVersionPreparer(ctx)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneIANAVersion", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneIANAVersion", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetTimezoneIANAVersionSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneIANAVersion", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneIANAVersion", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetTimezoneIANAVersionResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneIANAVersion", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneIANAVersion", resp, "Failure responding to request")
         return
         }
 
@@ -545,20 +545,20 @@ func (client TimezoneClient) GetTimezoneWindowsToIANA(ctx context.Context, query
     }
     req, err := client.GetTimezoneWindowsToIANAPreparer(ctx, query, territory)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneWindowsToIANA", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneWindowsToIANA", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetTimezoneWindowsToIANASender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneWindowsToIANA", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneWindowsToIANA", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetTimezoneWindowsToIANAResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.TimezoneClient", "GetTimezoneWindowsToIANA", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.TimezoneClient", "GetTimezoneWindowsToIANA", resp, "Failure responding to request")
         return
         }
 

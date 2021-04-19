@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -25,7 +25,7 @@ import (
     "github.com/Azure/go-autorest/tracing"
 )
 
-// RenderV2Client is the client for the RenderV2 methods of the Maps service.
+// RenderV2Client is the client for the RenderV2 methods of the Azmaps service.
 type RenderV2Client struct {
     BaseClient
 }
@@ -107,20 +107,20 @@ func (client RenderV2Client) GetMapTilePreview(ctx context.Context, tilesetID Ti
     }
     req, err := client.GetMapTilePreviewPreparer(ctx, tilesetID, zoom, xTileIndex, yTileIndex, timeStamp, tileSize, language, view)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.RenderV2Client", "GetMapTilePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.RenderV2Client", "GetMapTilePreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetMapTilePreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.RenderV2Client", "GetMapTilePreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderV2Client", "GetMapTilePreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetMapTilePreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.RenderV2Client", "GetMapTilePreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderV2Client", "GetMapTilePreview", resp, "Failure responding to request")
         return
         }
 

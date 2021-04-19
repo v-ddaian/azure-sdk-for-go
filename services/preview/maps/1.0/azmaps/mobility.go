@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -26,7 +26,7 @@ import (
     "github.com/Azure/go-autorest/autorest/validation"
 )
 
-// MobilityClient is the client for the Mobility methods of the Maps service.
+// MobilityClient is the client for the Mobility methods of the Azmaps service.
 type MobilityClient struct {
     BaseClient
 }
@@ -75,25 +75,25 @@ func (client MobilityClient) GetMetroAreaInfoPreview(ctx context.Context, query 
         if err := validation.Validate([]validation.Validation{
         { TargetValue: detailType,
          Constraints: []validation.Constraint{	{Target: "detailType", Name: validation.Null, Rule: true, Chain: nil }}}}); err != nil {
-        return result, validation.NewError("maps.MobilityClient", "GetMetroAreaInfoPreview", err.Error())
+        return result, validation.NewError("azmaps.MobilityClient", "GetMetroAreaInfoPreview", err.Error())
         }
 
         req, err := client.GetMetroAreaInfoPreviewPreparer(ctx, query, detailType, language)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetMetroAreaInfoPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetMetroAreaInfoPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetMetroAreaInfoPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetMetroAreaInfoPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetMetroAreaInfoPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetMetroAreaInfoPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetMetroAreaInfoPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetMetroAreaInfoPreview", resp, "Failure responding to request")
         return
         }
 
@@ -176,20 +176,20 @@ func (client MobilityClient) GetMetroAreaPreview(ctx context.Context, query stri
     }
     req, err := client.GetMetroAreaPreviewPreparer(ctx, query, queryType, language)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetMetroAreaPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetMetroAreaPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetMetroAreaPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetMetroAreaPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetMetroAreaPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetMetroAreaPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetMetroAreaPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetMetroAreaPreview", resp, "Failure responding to request")
         return
         }
 
@@ -285,20 +285,20 @@ func (client MobilityClient) GetNearbyTransitPreview(ctx context.Context, query 
     }
     req, err := client.GetNearbyTransitPreviewPreparer(ctx, query, metroID, limit, radius, objectType, language)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetNearbyTransitPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetNearbyTransitPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetNearbyTransitPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetNearbyTransitPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetNearbyTransitPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetNearbyTransitPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetNearbyTransitPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetNearbyTransitPreview", resp, "Failure responding to request")
         return
         }
 
@@ -424,20 +424,20 @@ func (client MobilityClient) GetRealTimeArrivalsPreview(ctx context.Context, que
     }
     req, err := client.GetRealTimeArrivalsPreviewPreparer(ctx, query, metroID, queryType, stopQueryType, limit, maxMinutesInFuture, transitType, agency, agencyType, timeoutInSeconds, language)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetRealTimeArrivalsPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetRealTimeArrivalsPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetRealTimeArrivalsPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetRealTimeArrivalsPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetRealTimeArrivalsPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetRealTimeArrivalsPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetRealTimeArrivalsPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetRealTimeArrivalsPreview", resp, "Failure responding to request")
         return
         }
 
@@ -558,20 +558,20 @@ func (client MobilityClient) GetTransitItineraryPreview(ctx context.Context, que
     }
     req, err := client.GetTransitItineraryPreviewPreparer(ctx, query, detailType, language)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetTransitItineraryPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetTransitItineraryPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetTransitItineraryPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetTransitItineraryPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetTransitItineraryPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetTransitItineraryPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetTransitItineraryPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetTransitItineraryPreview", resp, "Failure responding to request")
         return
         }
 
@@ -672,20 +672,20 @@ func (client MobilityClient) GetTransitLineInfoPreview(ctx context.Context, quer
     }
     req, err := client.GetTransitLineInfoPreviewPreparer(ctx, query, metroID, detailType, language)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetTransitLineInfoPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetTransitLineInfoPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetTransitLineInfoPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetTransitLineInfoPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetTransitLineInfoPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetTransitLineInfoPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetTransitLineInfoPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetTransitLineInfoPreview", resp, "Failure responding to request")
         return
         }
 
@@ -811,20 +811,20 @@ func (client MobilityClient) GetTransitRoutePreview(ctx context.Context, origin 
     }
     req, err := client.GetTransitRoutePreviewPreparer(ctx, origin, destination, metroID, originType, destinationType, modeType, transitType, agency, agencyType, timeParameter, timeType, routeType, bikeType, language)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetTransitRoutePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetTransitRoutePreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetTransitRoutePreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetTransitRoutePreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetTransitRoutePreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetTransitRoutePreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetTransitRoutePreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetTransitRoutePreview", resp, "Failure responding to request")
         return
         }
 
@@ -961,20 +961,20 @@ func (client MobilityClient) GetTransitStopInfoPreview(ctx context.Context, quer
     }
     req, err := client.GetTransitStopInfoPreviewPreparer(ctx, query, metroID, queryType, detailType, language)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetTransitStopInfoPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetTransitStopInfoPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetTransitStopInfoPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetTransitStopInfoPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetTransitStopInfoPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetTransitStopInfoPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.MobilityClient", "GetTransitStopInfoPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.MobilityClient", "GetTransitStopInfoPreview", resp, "Failure responding to request")
         return
         }
 

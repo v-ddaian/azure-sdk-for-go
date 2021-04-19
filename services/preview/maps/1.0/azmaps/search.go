@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -26,7 +26,7 @@ import (
     "github.com/Azure/go-autorest/autorest/validation"
 )
 
-// SearchClient is the client for the Search methods of the Maps service.
+// SearchClient is the client for the Search methods of the Azmaps service.
 type SearchClient struct {
     BaseClient
 }
@@ -138,25 +138,25 @@ func (client SearchClient) GetSearchAddress(ctx context.Context, formatParameter
         Chain: []validation.Constraint{	{Target: "ofs", Name: validation.InclusiveMaximum, Rule: int64(1900), Chain: nil },
         	{Target: "ofs", Name: validation.InclusiveMinimum, Rule: int64(0), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.SearchClient", "GetSearchAddress", err.Error())
+        return result, validation.NewError("azmaps.SearchClient", "GetSearchAddress", err.Error())
         }
 
         req, err := client.GetSearchAddressPreparer(ctx, formatParameter, query, typeahead, limit, ofs, countrySet, lat, lon, radius, topLeft, btmRight, language, extendedPostalCodesFor, view)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchAddress", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchAddress", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetSearchAddressSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchAddress", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchAddress", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetSearchAddressResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchAddress", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchAddress", resp, "Failure responding to request")
         return
         }
 
@@ -325,25 +325,25 @@ func (client SearchClient) GetSearchAddressReverse(ctx context.Context, formatPa
         Chain: []validation.Constraint{	{Target: "heading", Name: validation.InclusiveMaximum, Rule: float64(360), Chain: nil },
         	{Target: "heading", Name: validation.InclusiveMinimum, Rule: float64(-360), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.SearchClient", "GetSearchAddressReverse", err.Error())
+        return result, validation.NewError("azmaps.SearchClient", "GetSearchAddressReverse", err.Error())
         }
 
         req, err := client.GetSearchAddressReversePreparer(ctx, formatParameter, query, language, returnSpeedLimit, heading, radius, number, returnRoadUse, roadUse, allowFreeformNewline, returnMatchType, entityType, view)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchAddressReverse", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchAddressReverse", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetSearchAddressReverseSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchAddressReverse", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchAddressReverse", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetSearchAddressReverseResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchAddressReverse", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchAddressReverse", resp, "Failure responding to request")
         return
         }
 
@@ -489,25 +489,25 @@ func (client SearchClient) GetSearchAddressReverseCrossStreet(ctx context.Contex
         Chain: []validation.Constraint{	{Target: "heading", Name: validation.InclusiveMaximum, Rule: float64(360), Chain: nil },
         	{Target: "heading", Name: validation.InclusiveMinimum, Rule: float64(-360), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.SearchClient", "GetSearchAddressReverseCrossStreet", err.Error())
+        return result, validation.NewError("azmaps.SearchClient", "GetSearchAddressReverseCrossStreet", err.Error())
         }
 
         req, err := client.GetSearchAddressReverseCrossStreetPreparer(ctx, formatParameter, query, limit, heading, radius, language, view)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchAddressReverseCrossStreet", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchAddressReverseCrossStreet", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetSearchAddressReverseCrossStreetSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchAddressReverseCrossStreet", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchAddressReverseCrossStreet", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetSearchAddressReverseCrossStreetResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchAddressReverseCrossStreet", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchAddressReverseCrossStreet", resp, "Failure responding to request")
         return
         }
 
@@ -672,25 +672,25 @@ func (client SearchClient) GetSearchAddressStructured(ctx context.Context, forma
         Chain: []validation.Constraint{	{Target: "ofs", Name: validation.InclusiveMaximum, Rule: int64(1900), Chain: nil },
         	{Target: "ofs", Name: validation.InclusiveMinimum, Rule: int64(0), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.SearchClient", "GetSearchAddressStructured", err.Error())
+        return result, validation.NewError("azmaps.SearchClient", "GetSearchAddressStructured", err.Error())
         }
 
         req, err := client.GetSearchAddressStructuredPreparer(ctx, formatParameter, countryCode, language, limit, ofs, streetNumber, streetName, crossStreet, municipality, municipalitySubdivision, countryTertiarySubdivision, countrySecondarySubdivision, countrySubdivision, postalCode, extendedPostalCodesFor, view)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchAddressStructured", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchAddressStructured", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetSearchAddressStructuredSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchAddressStructured", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchAddressStructured", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetSearchAddressStructuredResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchAddressStructured", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchAddressStructured", resp, "Failure responding to request")
         return
         }
 
@@ -1000,25 +1000,25 @@ func (client SearchClient) GetSearchFuzzy(ctx context.Context, formatParameter T
         Chain: []validation.Constraint{	{Target: "maxFuzzyLevel", Name: validation.InclusiveMaximum, Rule: int64(4), Chain: nil },
         	{Target: "maxFuzzyLevel", Name: validation.InclusiveMinimum, Rule: int64(1), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.SearchClient", "GetSearchFuzzy", err.Error())
+        return result, validation.NewError("azmaps.SearchClient", "GetSearchFuzzy", err.Error())
         }
 
         req, err := client.GetSearchFuzzyPreparer(ctx, formatParameter, query, typeahead, limit, ofs, categorySet, countrySet, lat, lon, radius, topLeft, btmRight, language, extendedPostalCodesFor, minFuzzyLevel, maxFuzzyLevel, idxSet, brandSet, connectorSet, view, openingHours)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchFuzzy", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchFuzzy", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetSearchFuzzySender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchFuzzy", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchFuzzy", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetSearchFuzzyResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchFuzzy", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchFuzzy", resp, "Failure responding to request")
         return
         }
 
@@ -1288,25 +1288,25 @@ func (client SearchClient) GetSearchNearby(ctx context.Context, formatParameter 
         Chain: []validation.Constraint{	{Target: "ofs", Name: validation.InclusiveMaximum, Rule: int64(1900), Chain: nil },
         	{Target: "ofs", Name: validation.InclusiveMinimum, Rule: int64(0), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.SearchClient", "GetSearchNearby", err.Error())
+        return result, validation.NewError("azmaps.SearchClient", "GetSearchNearby", err.Error())
         }
 
         req, err := client.GetSearchNearbyPreparer(ctx, formatParameter, lat, lon, limit, ofs, categorySet, countrySet, radius, language, extendedPostalCodesFor, brandSet, connectorSet, view)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchNearby", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchNearby", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetSearchNearbySender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchNearby", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchNearby", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetSearchNearbyResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchNearby", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchNearby", resp, "Failure responding to request")
         return
         }
 
@@ -1540,25 +1540,25 @@ func (client SearchClient) GetSearchPOI(ctx context.Context, formatParameter Tex
         Chain: []validation.Constraint{	{Target: "ofs", Name: validation.InclusiveMaximum, Rule: int64(1900), Chain: nil },
         	{Target: "ofs", Name: validation.InclusiveMinimum, Rule: int64(0), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.SearchClient", "GetSearchPOI", err.Error())
+        return result, validation.NewError("azmaps.SearchClient", "GetSearchPOI", err.Error())
         }
 
         req, err := client.GetSearchPOIPreparer(ctx, formatParameter, query, typeahead, limit, ofs, categorySet, countrySet, lat, lon, radius, topLeft, btmRight, language, extendedPostalCodesFor, brandSet, connectorSet, view, openingHours)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchPOI", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchPOI", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetSearchPOISender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchPOI", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchPOI", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetSearchPOIResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchPOI", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchPOI", resp, "Failure responding to request")
         return
         }
 
@@ -1827,25 +1827,25 @@ func (client SearchClient) GetSearchPOICategory(ctx context.Context, formatParam
         Chain: []validation.Constraint{	{Target: "ofs", Name: validation.InclusiveMaximum, Rule: int64(1900), Chain: nil },
         	{Target: "ofs", Name: validation.InclusiveMinimum, Rule: int64(0), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.SearchClient", "GetSearchPOICategory", err.Error())
+        return result, validation.NewError("azmaps.SearchClient", "GetSearchPOICategory", err.Error())
         }
 
         req, err := client.GetSearchPOICategoryPreparer(ctx, formatParameter, query, typeahead, limit, ofs, categorySet, countrySet, lat, lon, radius, topLeft, btmRight, language, extendedPostalCodesFor, brandSet, connectorSet, view, openingHours)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchPOICategory", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchPOICategory", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetSearchPOICategorySender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchPOICategory", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchPOICategory", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetSearchPOICategoryResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchPOICategory", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchPOICategory", resp, "Failure responding to request")
         return
         }
 
@@ -1979,20 +1979,20 @@ func (client SearchClient) GetSearchPOICategoryTreePreview(ctx context.Context, 
     }
     req, err := client.GetSearchPOICategoryTreePreviewPreparer(ctx, language)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchPOICategoryTreePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchPOICategoryTreePreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetSearchPOICategoryTreePreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchPOICategoryTreePreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchPOICategoryTreePreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetSearchPOICategoryTreePreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchPOICategoryTreePreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchPOICategoryTreePreview", resp, "Failure responding to request")
         return
         }
 
@@ -2076,20 +2076,20 @@ func (client SearchClient) GetSearchPolygon(ctx context.Context, geometries stri
     }
     req, err := client.GetSearchPolygonPreparer(ctx, geometries)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchPolygon", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchPolygon", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetSearchPolygonSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchPolygon", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchPolygon", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetSearchPolygonResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "GetSearchPolygon", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "GetSearchPolygon", resp, "Failure responding to request")
         return
         }
 
@@ -2326,13 +2326,13 @@ func (client SearchClient) PostSearchAddressBatch(ctx context.Context, searchAdd
     }
     req, err := client.PostSearchAddressBatchPreparer(ctx, searchAddressBatchRequestBody)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SearchClient", "PostSearchAddressBatch", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "PostSearchAddressBatch", nil , "Failure preparing request")
     return
     }
 
         result, err = client.PostSearchAddressBatchSender(req)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "PostSearchAddressBatch", nil , "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "PostSearchAddressBatch", nil , "Failure sending request")
         return
         }
 
@@ -2582,13 +2582,13 @@ func (client SearchClient) PostSearchAddressReverseBatch(ctx context.Context, se
     }
     req, err := client.PostSearchAddressReverseBatchPreparer(ctx, searchAddressReverseBatchRequestBody)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SearchClient", "PostSearchAddressReverseBatch", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "PostSearchAddressReverseBatch", nil , "Failure preparing request")
     return
     }
 
         result, err = client.PostSearchAddressReverseBatchSender(req)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "PostSearchAddressReverseBatch", nil , "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "PostSearchAddressReverseBatch", nil , "Failure sending request")
         return
         }
 
@@ -2768,25 +2768,25 @@ func (client SearchClient) PostSearchAlongRoute(ctx context.Context, query strin
          Constraints: []validation.Constraint{	{Target: "searchAlongRouteRequestBody.Route", Name: validation.Null, Rule: false ,
         Chain: []validation.Constraint{	{Target: "searchAlongRouteRequestBody.Route.Coordinates", Name: validation.Null, Rule: true, Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.SearchClient", "PostSearchAlongRoute", err.Error())
+        return result, validation.NewError("azmaps.SearchClient", "PostSearchAlongRoute", err.Error())
         }
 
         req, err := client.PostSearchAlongRoutePreparer(ctx, query, formatParameter, maxDetourTime, searchAlongRouteRequestBody, categorySet, limit, brandSet, connectorSet, view, openingHours)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SearchClient", "PostSearchAlongRoute", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "PostSearchAlongRoute", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.PostSearchAlongRouteSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "PostSearchAlongRoute", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "PostSearchAlongRoute", resp, "Failure sending request")
         return
         }
 
         result, err = client.PostSearchAlongRouteResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "PostSearchAlongRoute", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "PostSearchAlongRoute", resp, "Failure responding to request")
         return
         }
 
@@ -3053,13 +3053,13 @@ func (client SearchClient) PostSearchFuzzyBatch(ctx context.Context, searchFuzzy
     }
     req, err := client.PostSearchFuzzyBatchPreparer(ctx, searchFuzzyBatchRequestBody)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SearchClient", "PostSearchFuzzyBatch", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "PostSearchFuzzyBatch", nil , "Failure preparing request")
     return
     }
 
         result, err = client.PostSearchFuzzyBatchSender(req)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "PostSearchFuzzyBatch", nil , "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "PostSearchFuzzyBatch", nil , "Failure sending request")
         return
         }
 
@@ -3233,25 +3233,25 @@ func (client SearchClient) PostSearchInsideGeometry(ctx context.Context, query s
         Chain: []validation.Constraint{	{Target: "limit", Name: validation.InclusiveMaximum, Rule: int64(100), Chain: nil },
         	{Target: "limit", Name: validation.InclusiveMinimum, Rule: int64(1), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.SearchClient", "PostSearchInsideGeometry", err.Error())
+        return result, validation.NewError("azmaps.SearchClient", "PostSearchInsideGeometry", err.Error())
         }
 
         req, err := client.PostSearchInsideGeometryPreparer(ctx, query, formatParameter, searchInsideGeometryRequestBody, limit, language, categorySet, extendedPostalCodesFor, idxSet, view, openingHours)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.SearchClient", "PostSearchInsideGeometry", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "PostSearchInsideGeometry", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.PostSearchInsideGeometrySender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "PostSearchInsideGeometry", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "PostSearchInsideGeometry", resp, "Failure sending request")
         return
         }
 
         result, err = client.PostSearchInsideGeometryResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.SearchClient", "PostSearchInsideGeometry", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.SearchClient", "PostSearchInsideGeometry", resp, "Failure responding to request")
         return
         }
 

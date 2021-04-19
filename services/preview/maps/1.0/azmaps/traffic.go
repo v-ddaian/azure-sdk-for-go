@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -26,7 +26,7 @@ import (
     "github.com/Azure/go-autorest/autorest/validation"
 )
 
-// TrafficClient is the client for the Traffic methods of the Maps service.
+// TrafficClient is the client for the Traffic methods of the Azmaps service.
 type TrafficClient struct {
     BaseClient
 }
@@ -81,25 +81,25 @@ func (client TrafficClient) GetTrafficFlowSegment(ctx context.Context, formatPar
         Chain: []validation.Constraint{	{Target: "thickness", Name: validation.InclusiveMaximum, Rule: int64(20), Chain: nil },
         	{Target: "thickness", Name: validation.InclusiveMinimum, Rule: int64(1), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.TrafficClient", "GetTrafficFlowSegment", err.Error())
+        return result, validation.NewError("azmaps.TrafficClient", "GetTrafficFlowSegment", err.Error())
         }
 
         req, err := client.GetTrafficFlowSegmentPreparer(ctx, formatParameter, style, zoom, query, unit, thickness, openLr)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.TrafficClient", "GetTrafficFlowSegment", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.TrafficClient", "GetTrafficFlowSegment", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetTrafficFlowSegmentSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.TrafficClient", "GetTrafficFlowSegment", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.TrafficClient", "GetTrafficFlowSegment", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetTrafficFlowSegmentResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.TrafficClient", "GetTrafficFlowSegment", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.TrafficClient", "GetTrafficFlowSegment", resp, "Failure responding to request")
         return
         }
 
@@ -211,25 +211,25 @@ func (client TrafficClient) GetTrafficFlowTile(ctx context.Context, formatParame
         Chain: []validation.Constraint{	{Target: "thickness", Name: validation.InclusiveMaximum, Rule: int64(20), Chain: nil },
         	{Target: "thickness", Name: validation.InclusiveMinimum, Rule: int64(1), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.TrafficClient", "GetTrafficFlowTile", err.Error())
+        return result, validation.NewError("azmaps.TrafficClient", "GetTrafficFlowTile", err.Error())
         }
 
         req, err := client.GetTrafficFlowTilePreparer(ctx, formatParameter, style, zoom, xTileIndex, yTileIndex, thickness)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.TrafficClient", "GetTrafficFlowTile", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.TrafficClient", "GetTrafficFlowTile", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetTrafficFlowTileSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.TrafficClient", "GetTrafficFlowTile", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.TrafficClient", "GetTrafficFlowTile", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetTrafficFlowTileResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.TrafficClient", "GetTrafficFlowTile", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.TrafficClient", "GetTrafficFlowTile", resp, "Failure responding to request")
         return
         }
 
@@ -346,25 +346,25 @@ func (client TrafficClient) GetTrafficIncidentDetail(ctx context.Context, format
         { TargetValue: boundingZoom,
          Constraints: []validation.Constraint{	{Target: "boundingZoom", Name: validation.InclusiveMaximum, Rule: int64(22), Chain: nil },
         	{Target: "boundingZoom", Name: validation.InclusiveMinimum, Rule: int64(0), Chain: nil }}}}); err != nil {
-        return result, validation.NewError("maps.TrafficClient", "GetTrafficIncidentDetail", err.Error())
+        return result, validation.NewError("azmaps.TrafficClient", "GetTrafficIncidentDetail", err.Error())
         }
 
         req, err := client.GetTrafficIncidentDetailPreparer(ctx, formatParameter, style, boundingbox, boundingZoom, trafficmodelid, language, projection, geometries, expandCluster, originalPosition)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.TrafficClient", "GetTrafficIncidentDetail", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.TrafficClient", "GetTrafficIncidentDetail", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetTrafficIncidentDetailSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.TrafficClient", "GetTrafficIncidentDetail", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.TrafficClient", "GetTrafficIncidentDetail", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetTrafficIncidentDetailResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.TrafficClient", "GetTrafficIncidentDetail", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.TrafficClient", "GetTrafficIncidentDetail", resp, "Failure responding to request")
         return
         }
 
@@ -478,20 +478,20 @@ func (client TrafficClient) GetTrafficIncidentTile(ctx context.Context, formatPa
     }
     req, err := client.GetTrafficIncidentTilePreparer(ctx, formatParameter, style, zoom, xTileIndex, yTileIndex, trafficState)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.TrafficClient", "GetTrafficIncidentTile", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.TrafficClient", "GetTrafficIncidentTile", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetTrafficIncidentTileSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.TrafficClient", "GetTrafficIncidentTile", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.TrafficClient", "GetTrafficIncidentTile", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetTrafficIncidentTileResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.TrafficClient", "GetTrafficIncidentTile", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.TrafficClient", "GetTrafficIncidentTile", resp, "Failure responding to request")
         return
         }
 
@@ -600,25 +600,25 @@ func (client TrafficClient) GetTrafficIncidentViewport(ctx context.Context, form
         { TargetValue: overviewzoom,
          Constraints: []validation.Constraint{	{Target: "overviewzoom", Name: validation.InclusiveMaximum, Rule: int64(22), Chain: nil },
         	{Target: "overviewzoom", Name: validation.InclusiveMinimum, Rule: int64(0), Chain: nil }}}}); err != nil {
-        return result, validation.NewError("maps.TrafficClient", "GetTrafficIncidentViewport", err.Error())
+        return result, validation.NewError("azmaps.TrafficClient", "GetTrafficIncidentViewport", err.Error())
         }
 
         req, err := client.GetTrafficIncidentViewportPreparer(ctx, formatParameter, boundingbox, boundingzoom, overviewbox, overviewzoom, copyright)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.TrafficClient", "GetTrafficIncidentViewport", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.TrafficClient", "GetTrafficIncidentViewport", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetTrafficIncidentViewportSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.TrafficClient", "GetTrafficIncidentViewport", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.TrafficClient", "GetTrafficIncidentViewport", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetTrafficIncidentViewportResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.TrafficClient", "GetTrafficIncidentViewport", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.TrafficClient", "GetTrafficIncidentViewport", resp, "Failure responding to request")
         return
         }
 

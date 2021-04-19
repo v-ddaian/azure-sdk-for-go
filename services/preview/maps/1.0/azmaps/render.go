@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -26,7 +26,7 @@ import (
     "github.com/Azure/go-autorest/autorest/validation"
 )
 
-// RenderClient is the client for the Render methods of the Maps service.
+// RenderClient is the client for the Render methods of the Azmaps service.
 type RenderClient struct {
     BaseClient
 }
@@ -66,20 +66,20 @@ func (client RenderClient) GetCopyrightCaption(ctx context.Context, formatParame
     }
     req, err := client.GetCopyrightCaptionPreparer(ctx, formatParameter)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetCopyrightCaption", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetCopyrightCaption", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetCopyrightCaptionSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetCopyrightCaption", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetCopyrightCaption", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetCopyrightCaptionResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetCopyrightCaption", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetCopyrightCaption", resp, "Failure responding to request")
         return
         }
 
@@ -167,20 +167,20 @@ func (client RenderClient) GetCopyrightForTile(ctx context.Context, formatParame
     }
     req, err := client.GetCopyrightForTilePreparer(ctx, formatParameter, zoom, xTileIndex, yTileIndex, textParameter)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetCopyrightForTile", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetCopyrightForTile", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetCopyrightForTileSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetCopyrightForTile", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetCopyrightForTile", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetCopyrightForTileResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetCopyrightForTile", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetCopyrightForTile", resp, "Failure responding to request")
         return
         }
 
@@ -263,20 +263,20 @@ func (client RenderClient) GetCopyrightForWorld(ctx context.Context, formatParam
     }
     req, err := client.GetCopyrightForWorldPreparer(ctx, formatParameter, textParameter)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetCopyrightForWorld", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetCopyrightForWorld", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetCopyrightForWorldSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetCopyrightForWorld", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetCopyrightForWorld", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetCopyrightForWorldResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetCopyrightForWorld", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetCopyrightForWorld", resp, "Failure responding to request")
         return
         }
 
@@ -358,20 +358,20 @@ func (client RenderClient) GetCopyrightFromBoundingBox(ctx context.Context, form
     }
     req, err := client.GetCopyrightFromBoundingBoxPreparer(ctx, formatParameter, mincoordinates, maxcoordinates, textParameter)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetCopyrightFromBoundingBox", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetCopyrightFromBoundingBox", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetCopyrightFromBoundingBoxSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetCopyrightFromBoundingBox", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetCopyrightFromBoundingBox", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetCopyrightFromBoundingBoxResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetCopyrightFromBoundingBox", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetCopyrightFromBoundingBox", resp, "Failure responding to request")
         return
         }
 
@@ -817,25 +817,25 @@ func (client RenderClient) GetMapImage(ctx context.Context, layer StaticMapLayer
         Chain: []validation.Constraint{	{Target: "width", Name: validation.InclusiveMaximum, Rule: int64(8192), Chain: nil },
         	{Target: "width", Name: validation.InclusiveMinimum, Rule: int64(1), Chain: nil },
         }}}}}); err != nil {
-        return result, validation.NewError("maps.RenderClient", "GetMapImage", err.Error())
+        return result, validation.NewError("azmaps.RenderClient", "GetMapImage", err.Error())
         }
 
         req, err := client.GetMapImagePreparer(ctx, layer, style, zoom, center, bbox, height, width, language, view, pins, pathParameter)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetMapImage", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetMapImage", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetMapImageSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetMapImage", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetMapImage", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetMapImageResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetMapImage", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetMapImage", resp, "Failure responding to request")
         return
         }
 
@@ -962,20 +962,20 @@ func (client RenderClient) GetMapImageryTile(ctx context.Context, zoom int32, xT
     }
     req, err := client.GetMapImageryTilePreparer(ctx, zoom, xTileIndex, yTileIndex)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetMapImageryTile", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetMapImageryTile", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetMapImageryTileSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetMapImageryTile", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetMapImageryTile", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetMapImageryTileResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetMapImageryTile", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetMapImageryTile", resp, "Failure responding to request")
         return
         }
 
@@ -1062,20 +1062,20 @@ func (client RenderClient) GetMapStateTilePreview(ctx context.Context, zoom int3
     }
     req, err := client.GetMapStateTilePreviewPreparer(ctx, zoom, xTileIndex, yTileIndex, statesetID)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetMapStateTilePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetMapStateTilePreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetMapStateTilePreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetMapStateTilePreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetMapStateTilePreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetMapStateTilePreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetMapStateTilePreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetMapStateTilePreview", resp, "Failure responding to request")
         return
         }
 
@@ -1183,20 +1183,20 @@ func (client RenderClient) GetMapTile(ctx context.Context, formatParameter TileF
     }
     req, err := client.GetMapTilePreparer(ctx, formatParameter, layer, style, zoom, xTileIndex, yTileIndex, tileSize, language, view)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetMapTile", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetMapTile", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetMapTileSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetMapTile", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetMapTile", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetMapTileResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.RenderClient", "GetMapTile", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.RenderClient", "GetMapTile", resp, "Failure responding to request")
         return
         }
 

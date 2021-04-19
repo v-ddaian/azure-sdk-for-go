@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -25,7 +25,7 @@ import (
     "github.com/Azure/go-autorest/tracing"
 )
 
-// AliasClient is the client for the Alias methods of the Maps service.
+// AliasClient is the client for the Alias methods of the Azmaps service.
 type AliasClient struct {
     BaseClient
 }
@@ -74,20 +74,20 @@ func (client AliasClient) AssignPreview(ctx context.Context, aliasID string, res
     }
     req, err := client.AssignPreviewPreparer(ctx, aliasID, resourceID)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.AliasClient", "AssignPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.AliasClient", "AssignPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.AssignPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.AliasClient", "AssignPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.AliasClient", "AssignPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.AssignPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.AliasClient", "AssignPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.AliasClient", "AssignPreview", resp, "Failure responding to request")
         return
         }
 
@@ -175,20 +175,20 @@ func (client AliasClient) CreatePreview(ctx context.Context) (result AliasCreate
     }
     req, err := client.CreatePreviewPreparer(ctx)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.AliasClient", "CreatePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.AliasClient", "CreatePreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.CreatePreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.AliasClient", "CreatePreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.AliasClient", "CreatePreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.CreatePreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.AliasClient", "CreatePreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.AliasClient", "CreatePreview", resp, "Failure responding to request")
         return
         }
 
@@ -267,20 +267,20 @@ func (client AliasClient) DeletePreview(ctx context.Context, aliasID string) (re
     }
     req, err := client.DeletePreviewPreparer(ctx, aliasID)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.AliasClient", "DeletePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.AliasClient", "DeletePreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.DeletePreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.AliasClient", "DeletePreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.AliasClient", "DeletePreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.DeletePreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.AliasClient", "DeletePreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.AliasClient", "DeletePreview", resp, "Failure responding to request")
         return
         }
 
@@ -389,20 +389,20 @@ func (client AliasClient) ListPreview(ctx context.Context) (result AliasListResp
     }
     req, err := client.ListPreviewPreparer(ctx)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.AliasClient", "ListPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.AliasClient", "ListPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.ListPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.AliasClient", "ListPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.AliasClient", "ListPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.ListPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.AliasClient", "ListPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.AliasClient", "ListPreview", resp, "Failure responding to request")
         return
         }
 

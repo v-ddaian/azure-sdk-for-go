@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -25,7 +25,7 @@ import (
     "github.com/Azure/go-autorest/tracing"
 )
 
-// DataClient is the client for the Data methods of the Maps service.
+// DataClient is the client for the Data methods of the Azmaps service.
 type DataClient struct {
     BaseClient
 }
@@ -82,20 +82,20 @@ func (client DataClient) DeletePreview(ctx context.Context, udid string) (result
     }
     req, err := client.DeletePreviewPreparer(ctx, udid)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.DataClient", "DeletePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.DataClient", "DeletePreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.DeletePreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.DataClient", "DeletePreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.DataClient", "DeletePreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.DeletePreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.DataClient", "DeletePreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.DataClient", "DeletePreview", resp, "Failure responding to request")
         return
         }
 
@@ -214,20 +214,20 @@ func (client DataClient) DownloadPreview(ctx context.Context, udid string) (resu
     }
     req, err := client.DownloadPreviewPreparer(ctx, udid)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.DataClient", "DownloadPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.DataClient", "DownloadPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.DownloadPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.DataClient", "DownloadPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.DataClient", "DownloadPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.DownloadPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.DataClient", "DownloadPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.DataClient", "DownloadPreview", resp, "Failure responding to request")
         return
         }
 
@@ -332,7 +332,7 @@ autorest.WithQueryParameters(queryParameters))
 // ```
 //
 // <br>
-func (client DataClient) ListPreview(ctx context.Context) (result DataListResponse, err error) {
+func (client DataClient) ListPreview(ctx context.Context) (result MapDataListResponse, err error) {
     if tracing.IsEnabled() {
         ctx = tracing.StartSpan(ctx, fqdn + "/DataClient.ListPreview")
         defer func() {
@@ -345,20 +345,20 @@ func (client DataClient) ListPreview(ctx context.Context) (result DataListRespon
     }
     req, err := client.ListPreviewPreparer(ctx)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.DataClient", "ListPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.DataClient", "ListPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.ListPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.DataClient", "ListPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.DataClient", "ListPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.ListPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.DataClient", "ListPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.DataClient", "ListPreview", resp, "Failure responding to request")
         return
         }
 
@@ -395,7 +395,7 @@ autorest.WithQueryParameters(queryParameters))
 
     // ListPreviewResponder handles the response to the ListPreview request. The method always
     // closes the http.Response Body.
-    func (client DataClient) ListPreviewResponder(resp *http.Response) (result DataListResponse, err error) {
+    func (client DataClient) ListPreviewResponder(resp *http.Response) (result MapDataListResponse, err error) {
             err = autorest.Respond(
             resp,
             azure.WithErrorUnlessStatusCode(http.StatusOK),
@@ -480,13 +480,13 @@ func (client DataClient) UpdatePreview(ctx context.Context, udid string, updateC
     }
     req, err := client.UpdatePreviewPreparer(ctx, udid, updateContent)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.DataClient", "UpdatePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.DataClient", "UpdatePreview", nil , "Failure preparing request")
     return
     }
 
         result, err = client.UpdatePreviewSender(req)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.DataClient", "UpdatePreview", nil , "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.DataClient", "UpdatePreview", nil , "Failure sending request")
         return
         }
 
@@ -617,13 +617,13 @@ func (client DataClient) UploadPreview(ctx context.Context, dataFormat UploadDat
     }
     req, err := client.UploadPreviewPreparer(ctx, dataFormat, uploadContent)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.DataClient", "UploadPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.DataClient", "UploadPreview", nil , "Failure preparing request")
     return
     }
 
         result, err = client.UploadPreviewSender(req)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.DataClient", "UploadPreview", nil , "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.DataClient", "UploadPreview", nil , "Failure sending request")
         return
         }
 

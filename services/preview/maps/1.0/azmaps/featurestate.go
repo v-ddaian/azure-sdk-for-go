@@ -1,4 +1,4 @@
-package maps
+package azmaps
 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -25,7 +25,7 @@ import (
     "github.com/Azure/go-autorest/tracing"
 )
 
-// FeatureStateClient is the client for the FeatureState methods of the Maps service.
+// FeatureStateClient is the client for the FeatureState methods of the Azmaps service.
 type FeatureStateClient struct {
     BaseClient
 }
@@ -80,20 +80,20 @@ func (client FeatureStateClient) CreateStatesetPreview(ctx context.Context, data
     }
     req, err := client.CreateStatesetPreviewPreparer(ctx, datasetID, statesetCreateRequestBody)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "CreateStatesetPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "CreateStatesetPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.CreateStatesetPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "CreateStatesetPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "CreateStatesetPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.CreateStatesetPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "CreateStatesetPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "CreateStatesetPreview", resp, "Failure responding to request")
         return
         }
 
@@ -159,20 +159,20 @@ func (client FeatureStateClient) DeleteStatePreview(ctx context.Context, statese
     }
     req, err := client.DeleteStatePreviewPreparer(ctx, statesetID, featureID, stateKeyName)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "DeleteStatePreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "DeleteStatePreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.DeleteStatePreviewSender(req)
         if err != nil {
         result.Response = resp
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "DeleteStatePreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "DeleteStatePreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.DeleteStatePreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "DeleteStatePreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "DeleteStatePreview", resp, "Failure responding to request")
         return
         }
 
@@ -234,20 +234,20 @@ func (client FeatureStateClient) DeleteStatesetPreview(ctx context.Context, stat
     }
     req, err := client.DeleteStatesetPreviewPreparer(ctx, statesetID)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "DeleteStatesetPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "DeleteStatesetPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.DeleteStatesetPreviewSender(req)
         if err != nil {
         result.Response = resp
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "DeleteStatesetPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "DeleteStatesetPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.DeleteStatesetPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "DeleteStatesetPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "DeleteStatesetPreview", resp, "Failure responding to request")
         return
         }
 
@@ -314,20 +314,20 @@ func (client FeatureStateClient) GetStatesetPreview(ctx context.Context, statese
     }
     req, err := client.GetStatesetPreviewPreparer(ctx, statesetID)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "GetStatesetPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "GetStatesetPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetStatesetPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "GetStatesetPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "GetStatesetPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetStatesetPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "GetStatesetPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "GetStatesetPreview", resp, "Failure responding to request")
         return
         }
 
@@ -393,20 +393,20 @@ func (client FeatureStateClient) GetStatesPreview(ctx context.Context, statesetI
     }
     req, err := client.GetStatesPreviewPreparer(ctx, statesetID, featureID)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "GetStatesPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "GetStatesPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.GetStatesPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "GetStatesPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "GetStatesPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.GetStatesPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "GetStatesPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "GetStatesPreview", resp, "Failure responding to request")
         return
         }
 
@@ -466,20 +466,20 @@ func (client FeatureStateClient) ListStatesetPreview(ctx context.Context) (resul
     }
     req, err := client.ListStatesetPreviewPreparer(ctx)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "ListStatesetPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "ListStatesetPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.ListStatesetPreviewSender(req)
         if err != nil {
         result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "ListStatesetPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "ListStatesetPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.ListStatesetPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "ListStatesetPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "ListStatesetPreview", resp, "Failure responding to request")
         return
         }
 
@@ -543,20 +543,20 @@ func (client FeatureStateClient) PutStatesetPreview(ctx context.Context, statese
     }
     req, err := client.PutStatesetPreviewPreparer(ctx, statesetID, statesetStyleUpdateRequestBody)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "PutStatesetPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "PutStatesetPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.PutStatesetPreviewSender(req)
         if err != nil {
         result.Response = resp
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "PutStatesetPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "PutStatesetPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.PutStatesetPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "PutStatesetPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "PutStatesetPreview", resp, "Failure responding to request")
         return
         }
 
@@ -625,20 +625,20 @@ func (client FeatureStateClient) UpdateStatesPreview(ctx context.Context, states
     }
     req, err := client.UpdateStatesPreviewPreparer(ctx, statesetID, featureID, featureStateUpdateRequestBody)
     if err != nil {
-    err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "UpdateStatesPreview", nil , "Failure preparing request")
+    err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "UpdateStatesPreview", nil , "Failure preparing request")
     return
     }
 
         resp, err := client.UpdateStatesPreviewSender(req)
         if err != nil {
         result.Response = resp
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "UpdateStatesPreview", resp, "Failure sending request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "UpdateStatesPreview", resp, "Failure sending request")
         return
         }
 
         result, err = client.UpdateStatesPreviewResponder(resp)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "maps.FeatureStateClient", "UpdateStatesPreview", resp, "Failure responding to request")
+        err = autorest.NewErrorWithError(err, "azmaps.FeatureStateClient", "UpdateStatesPreview", resp, "Failure responding to request")
         return
         }
 
