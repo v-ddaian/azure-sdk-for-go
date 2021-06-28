@@ -1,6 +1,6 @@
 package creator
 
-import "github.com/Azure/azure-sdk-for-go/version"
+import "github.com/v-ddaian/azure-sdk-for-go/version"
 
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
