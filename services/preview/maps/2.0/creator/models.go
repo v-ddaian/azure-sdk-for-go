@@ -18,7 +18,7 @@ import (
 )
 
 // The package's fully qualified name.
-const fqdn = "github.com/v-ddaian/azure-sdk-for-go/services/preview/maps/2.0/creator@dev-maps-sdk"
+const fqdn = "github.com/v-ddaian/azure-sdk-for-go/services/preview/maps/2.0/creator"
 
             // AliasesCreateResponse the response model for the Alias Create API for the case when the alias was
             // successfully created.

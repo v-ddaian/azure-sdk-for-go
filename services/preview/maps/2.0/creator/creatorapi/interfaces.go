@@ -8,7 +8,7 @@ package creatorapi
 
 import (
     "context"
-    "github.com/v-ddaian/azure-sdk-for-go/services/preview/maps/2.0/creator@dev-maps-sdk"
+    "github.com/v-ddaian/azure-sdk-for-go/services/preview/maps/2.0/creator"
     "github.com/Azure/go-autorest/autorest"
     "github.com/Azure/go-autorest/autorest/date"
 )

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"creator"
+	"github.com/v-ddaian/azure-sdk-for-go/services/preview/maps/2.0/creator"
 
 
 )
