@@ -15,7 +15,7 @@ import (
 
 const (
 // DefaultGeography is the default value for geography
-DefaultGeography = us)
+DefaultGeography = Us)
 
 // BaseClient is the base client for Creator.
 type BaseClient struct {
@@ -30,7 +30,7 @@ func New(xMsClientID string)BaseClient {
 }
 
 // NewWithoutDefaults creates an instance of the BaseClient client.
-func NewWithoutDefaults(xMsClientID string, geography geographicResourceLocation) BaseClient {
+func NewWithoutDefaults(xMsClientID string, geography GeographicResourceLocation) BaseClient {
     return BaseClient{
         Client: autorest.NewClientWithUserAgent(UserAgent()),
                 Geography: geography,
