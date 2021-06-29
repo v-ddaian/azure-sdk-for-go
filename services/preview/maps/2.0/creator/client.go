@@ -37,6 +37,6 @@ func NewWithoutDefaults(xMsClientID string, geography GeographicResourceLocation
 		Client:      autorest.NewClientWithUserAgent(UserAgent()),
 		Geography:   geography,
 		XMsClientID: xMsClientID,
-        SubscriptionKey: string
+        SubscriptionKey: SubscriptionKey
 	}
 }
