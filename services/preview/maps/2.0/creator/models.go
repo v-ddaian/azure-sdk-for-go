@@ -7,14 +7,15 @@ package creator
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 import (
-    "context"
-    "encoding/json"
-    "github.com/Azure/go-autorest/autorest"
-    "github.com/Azure/go-autorest/autorest/azure"
-    "github.com/Azure/go-autorest/autorest/to"
-    "github.com/Azure/go-autorest/tracing"
-    "io"
-    "net/http"
+	"context"
+	"encoding/json"
+	"io"
+	"net/http"
+
+	"github.com/Azure/go-autorest/autorest"
+	"github.com/Azure/go-autorest/autorest/azure"
+	"github.com/Azure/go-autorest/autorest/to"
+	"github.com/Azure/go-autorest/tracing"
 )
 
 // The package's fully qualified name.
@@ -415,7 +416,6 @@ const fqdn = "github.com/v-ddaian/azure-sdk-for-go/services/preview/maps/2.0/cre
                 return
             }
             if !done {
-                    lror.Response.Response = future.Response()
                 err = azure.NewAsyncOpIncompleteError("creator.ConversionConvertFuture")
                 return
             }
@@ -630,7 +630,6 @@ const fqdn = "github.com/v-ddaian/azure-sdk-for-go/services/preview/maps/2.0/cre
                 return
             }
             if !done {
-                    lror.Response.Response = future.Response()
                 err = azure.NewAsyncOpIncompleteError("creator.DatasetCreateFuture")
                 return
             }
@@ -856,7 +855,6 @@ const fqdn = "github.com/v-ddaian/azure-sdk-for-go/services/preview/maps/2.0/cre
                 return
             }
             if !done {
-                    lror.Response.Response = future.Response()
                 err = azure.NewAsyncOpIncompleteError("creator.DataUpdatePreviewFuture")
                 return
             }
@@ -897,7 +895,6 @@ const fqdn = "github.com/v-ddaian/azure-sdk-for-go/services/preview/maps/2.0/cre
                 return
             }
             if !done {
-                    lror.Response.Response = future.Response()
                 err = azure.NewAsyncOpIncompleteError("creator.DataUploadPreviewFuture")
                 return
             }
@@ -1897,7 +1894,6 @@ const fqdn = "github.com/v-ddaian/azure-sdk-for-go/services/preview/maps/2.0/cre
                 return
             }
             if !done {
-                    lror.Response.Response = future.Response()
                 err = azure.NewAsyncOpIncompleteError("creator.TilesetCreateFuture")
                 return
             }

@@ -7,105 +7,113 @@ package creatorapi
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 import (
-    "context"
-    "github.com/v-ddaian/azure-sdk-for-go/services/preview/maps/2.0/creator"
-    "github.com/Azure/go-autorest/autorest"
-    "github.com/Azure/go-autorest/autorest/date"
+	"context"
+
+	"github.com/Azure/go-autorest/autorest"
+	"github.com/Azure/go-autorest/autorest/date"
+	"github.com/v-ddaian/azure-sdk-for-go/services/preview/maps/2.0/creator"
 )
 
-        // AliasClientAPI contains the set of methods on the AliasClient type.
-        type AliasClientAPI interface {
-            Assign(ctx context.Context, aliasID string, creatorDataItemID string) (result creator.AliasListItem, err error)
-            Create(ctx context.Context, creatorDataItemID string) (result creator.AliasesCreateResponse, err error)
-            Delete(ctx context.Context, aliasID string) (result autorest.Response, err error)
-            GetDetails(ctx context.Context, aliasID string) (result creator.AliasListItem, err error)
-            List(ctx context.Context) (result creator.AliasListResponsePage, err error)
-                ListComplete(ctx context.Context) (result creator.AliasListResponseIterator, err error)
-        }
+// AliasClientAPI contains the set of methods on the AliasClient type.
+type AliasClientAPI interface {
+	Assign(ctx context.Context, aliasID string, creatorDataItemID string) (result creator.AliasListItem, err error)
+	Create(ctx context.Context, creatorDataItemID string) (result creator.AliasesCreateResponse, err error)
+	Delete(ctx context.Context, aliasID string) (result autorest.Response, err error)
+	GetDetails(ctx context.Context, aliasID string) (result creator.AliasListItem, err error)
+	List(ctx context.Context) (result creator.AliasListResponsePage, err error)
+	ListComplete(ctx context.Context) (result creator.AliasListResponseIterator, err error)
+}
 
-        var _ AliasClientAPI = (*creator.AliasClient)(nil)
-        // DataClientAPI contains the set of methods on the DataClient type.
-        type DataClientAPI interface {
-            DeletePreview(ctx context.Context, uniqueDataID string) (result autorest.Response, err error)
-            DownloadPreview(ctx context.Context, uniqueDataID string) (result creator.ReadCloser, err error)
-            GetOperationPreview(ctx context.Context, operationID string) (result creator.LongRunningOperationResult, err error)
-            ListPreview(ctx context.Context) (result creator.MapDataListResponse, err error)
-            UpdatePreview(ctx context.Context, uniqueDataID string, updateContent interface{}, uploadDataDescription string) (result creator.DataUpdatePreviewFuture, err error)
-            UploadPreview(ctx context.Context, uploadDataFormat creator.UploadDataFormat, uploadContent interface{}, uploadDataDescription string) (result creator.DataUploadPreviewFuture, err error)
-        }
+var _ AliasClientAPI = (*creator.AliasClient)(nil)
 
-        var _ DataClientAPI = (*creator.DataClient)(nil)
-        // DatasetClientAPI contains the set of methods on the DatasetClient type.
-        type DatasetClientAPI interface {
-            Create(ctx context.Context, conversionID string, datasetID string, descriptionDataset string) (result creator.DatasetCreateFuture, err error)
-            Delete(ctx context.Context, datasetID string) (result autorest.Response, err error)
-            Get(ctx context.Context, datasetID string) (result creator.DatasetDetailInfo, err error)
-            GetOperation(ctx context.Context, operationID string) (result creator.LongRunningOperationResult, err error)
-            List(ctx context.Context) (result creator.DatasetListResponsePage, err error)
-                ListComplete(ctx context.Context) (result creator.DatasetListResponseIterator, err error)
-        }
+// DataClientAPI contains the set of methods on the DataClient type.
+type DataClientAPI interface {
+	DeletePreview(ctx context.Context, uniqueDataID string) (result autorest.Response, err error)
+	DownloadPreview(ctx context.Context, uniqueDataID string) (result creator.ReadCloser, err error)
+	GetOperationPreview(ctx context.Context, operationID string) (result creator.LongRunningOperationResult, err error)
+	ListPreview(ctx context.Context) (result creator.MapDataListResponse, err error)
+	UpdatePreview(ctx context.Context, uniqueDataID string, updateContent interface{}, uploadDataDescription string) (result creator.DataUpdatePreviewFuture, err error)
+	UploadPreview(ctx context.Context, uploadDataFormat creator.UploadDataFormat, uploadContent interface{}, uploadDataDescription string) (result creator.DataUploadPreviewFuture, err error)
+}
 
-        var _ DatasetClientAPI = (*creator.DatasetClient)(nil)
-        // ConversionClientAPI contains the set of methods on the ConversionClient type.
-        type ConversionClientAPI interface {
-            Convert(ctx context.Context, udid string, outputOntology string, description string) (result creator.ConversionConvertFuture, err error)
-            Delete(ctx context.Context, conversionID string) (result autorest.Response, err error)
-            Get(ctx context.Context, conversionID string) (result creator.ConversionListDetailInfo, err error)
-            GetOperation(ctx context.Context, operationID string) (result creator.LongRunningOperationResult, err error)
-            List(ctx context.Context) (result creator.ConversionListResponsePage, err error)
-                ListComplete(ctx context.Context) (result creator.ConversionListResponseIterator, err error)
-        }
+var _ DataClientAPI = (*creator.DataClient)(nil)
 
-        var _ ConversionClientAPI = (*creator.ConversionClient)(nil)
-        // FeatureStateClientAPI contains the set of methods on the FeatureStateClient type.
-        type FeatureStateClientAPI interface {
-            CreateStateset(ctx context.Context, datasetID string, statesetCreateRequestBody creator.StylesObject, description string) (result creator.StatesetCreatedResponse, err error)
-            DeleteState(ctx context.Context, statesetID string, featureID string, stateKeyName string) (result autorest.Response, err error)
-            DeleteStateset(ctx context.Context, statesetID string) (result autorest.Response, err error)
-            GetStates(ctx context.Context, statesetID string, featureID string) (result creator.FeatureStatesStructure, err error)
-            GetStateset(ctx context.Context, statesetID string) (result creator.StatesetGetResponse, err error)
-            ListStateset(ctx context.Context) (result creator.StatesetListResponsePage, err error)
-                ListStatesetComplete(ctx context.Context) (result creator.StatesetListResponseIterator, err error)
-            PutStateset(ctx context.Context, statesetID string, statesetStyleUpdateRequestBody creator.StylesObject) (result autorest.Response, err error)
-            UpdateStates(ctx context.Context, statesetID string, featureID string, featureStateUpdateRequestBody creator.FeatureStatesStructure) (result autorest.Response, err error)
-        }
+// DatasetClientAPI contains the set of methods on the DatasetClient type.
+type DatasetClientAPI interface {
+	Create(ctx context.Context, conversionID string, datasetID string, descriptionDataset string) (result creator.DatasetCreateFuture, err error)
+	Delete(ctx context.Context, datasetID string) (result autorest.Response, err error)
+	Get(ctx context.Context, datasetID string) (result creator.DatasetDetailInfo, err error)
+	GetOperation(ctx context.Context, operationID string) (result creator.LongRunningOperationResult, err error)
+	List(ctx context.Context) (result creator.DatasetListResponsePage, err error)
+	ListComplete(ctx context.Context) (result creator.DatasetListResponseIterator, err error)
+}
 
-        var _ FeatureStateClientAPI = (*creator.FeatureStateClient)(nil)
-        // SpatialClientAPI contains the set of methods on the SpatialClient type.
-        type SpatialClientAPI interface {
-            GetBuffer(ctx context.Context, udid string, distances string) (result creator.BufferResponse, err error)
-            GetClosestPoint(ctx context.Context, udid string, latitude float64, longitude float64, numberOfClosestPoints *int32) (result creator.ClosestPointResponse, err error)
-            GetGeofence(ctx context.Context, deviceID string, udid string, latitude float64, longitude float64, z *float64, userTime *date.Time, searchBuffer *float64, isAsync *bool, mode creator.GeofenceMode) (result creator.GeofenceResponse, err error)
-            GetGreatCircleDistance(ctx context.Context, query string) (result creator.GreatCircleDistanceResponse, err error)
-            GetPointInPolygon(ctx context.Context, udid string, latitude float64, longitude float64) (result creator.PointInPolygonResponse, err error)
-            PostBuffer(ctx context.Context, bufferRequestBody creator.BufferRequestBody) (result creator.BufferResponse, err error)
-            PostClosestPoint(ctx context.Context, latitude float64, longitude float64, closestPointRequestBody creator.GeoJSONFeatureCollection, numberOfClosestPoints *int32) (result creator.ClosestPointResponse, err error)
-            PostGeofence(ctx context.Context, deviceID string, latitude float64, longitude float64, searchGeofenceRequestBody creator.GeoJSONFeatureCollection, z *float64, userTime *date.Time, searchBuffer *float64, isAsync *bool, mode creator.GeofenceMode) (result creator.GeofenceResponse, err error)
-            PostPointInPolygon(ctx context.Context, latitude float64, longitude float64, pointInPolygonRequestBody creator.GeoJSONFeatureCollection) (result creator.PointInPolygonResponse, err error)
-        }
+var _ DatasetClientAPI = (*creator.DatasetClient)(nil)
 
-        var _ SpatialClientAPI = (*creator.SpatialClient)(nil)
-        // TilesetClientAPI contains the set of methods on the TilesetClient type.
-        type TilesetClientAPI interface {
-            Create(ctx context.Context, datasetID string, description string) (result creator.TilesetCreateFuture, err error)
-            Delete(ctx context.Context, tilesetID string) (result autorest.Response, err error)
-            Get(ctx context.Context, tilesetID string) (result creator.TilesetDetailInfo, err error)
-            GetOperation(ctx context.Context, operationID string) (result creator.LongRunningOperationResult, err error)
-            List(ctx context.Context) (result creator.TilesetListResponsePage, err error)
-                ListComplete(ctx context.Context) (result creator.TilesetListResponseIterator, err error)
-        }
+// ConversionClientAPI contains the set of methods on the ConversionClient type.
+type ConversionClientAPI interface {
+	Convert(ctx context.Context, udid string, outputOntology string, description string) (result creator.ConversionConvertFuture, err error)
+	Delete(ctx context.Context, conversionID string) (result autorest.Response, err error)
+	Get(ctx context.Context, conversionID string) (result creator.ConversionListDetailInfo, err error)
+	GetOperation(ctx context.Context, operationID string) (result creator.LongRunningOperationResult, err error)
+	List(ctx context.Context) (result creator.ConversionListResponsePage, err error)
+	ListComplete(ctx context.Context) (result creator.ConversionListResponseIterator, err error)
+}
 
-        var _ TilesetClientAPI = (*creator.TilesetClient)(nil)
-        // WFSClientAPI contains the set of methods on the WFSClient type.
-        type WFSClientAPI interface {
-            DeleteFeature(ctx context.Context, datasetID string, collectionID string, featureID string) (result autorest.Response, err error)
-            GetCollection(ctx context.Context, datasetID string, collectionID string) (result creator.CollectionInfo, err error)
-            GetCollectionDefinition(ctx context.Context, datasetID string, collectionID string) (result creator.CollectionDefinitionResponse, err error)
-            GetCollections(ctx context.Context, datasetID string) (result creator.CollectionsResponse, err error)
-            GetConformance(ctx context.Context, datasetID string) (result creator.ConformanceResponse, err error)
-            GetFeature(ctx context.Context, datasetID string, collectionID string, featureID string) (result creator.FeatureResponse, err error)
-            GetFeatures(ctx context.Context, datasetID string, collectionID string, limit *int32, bbox string, filter string) (result creator.ExtendedGeoJSONFeatureCollection, err error)
-            GetLandingPage(ctx context.Context, datasetID string) (result creator.LandingPageResponse, err error)
-        }
+var _ ConversionClientAPI = (*creator.ConversionClient)(nil)
 
-        var _ WFSClientAPI = (*creator.WFSClient)(nil)
+// FeatureStateClientAPI contains the set of methods on the FeatureStateClient type.
+type FeatureStateClientAPI interface {
+	CreateStateset(ctx context.Context, datasetID string, statesetCreateRequestBody creator.StylesObject, description string) (result creator.StatesetCreatedResponse, err error)
+	DeleteState(ctx context.Context, statesetID string, featureID string, stateKeyName string) (result autorest.Response, err error)
+	DeleteStateset(ctx context.Context, statesetID string) (result autorest.Response, err error)
+	GetStates(ctx context.Context, statesetID string, featureID string) (result creator.FeatureStatesStructure, err error)
+	GetStateset(ctx context.Context, statesetID string) (result creator.StatesetGetResponse, err error)
+	ListStateset(ctx context.Context) (result creator.StatesetListResponsePage, err error)
+	ListStatesetComplete(ctx context.Context) (result creator.StatesetListResponseIterator, err error)
+	PutStateset(ctx context.Context, statesetID string, statesetStyleUpdateRequestBody creator.StylesObject) (result autorest.Response, err error)
+	UpdateStates(ctx context.Context, statesetID string, featureID string, featureStateUpdateRequestBody creator.FeatureStatesStructure) (result autorest.Response, err error)
+}
+
+var _ FeatureStateClientAPI = (*creator.FeatureStateClient)(nil)
+
+// SpatialClientAPI contains the set of methods on the SpatialClient type.
+type SpatialClientAPI interface {
+	GetBuffer(ctx context.Context, udid string, distances string) (result creator.BufferResponse, err error)
+	GetClosestPoint(ctx context.Context, udid string, latitude float64, longitude float64, numberOfClosestPoints *int32) (result creator.ClosestPointResponse, err error)
+	GetGeofence(ctx context.Context, deviceID string, udid string, latitude float64, longitude float64, z *float64, userTime *date.Time, searchBuffer *float64, isAsync *bool, mode creator.GeofenceMode) (result creator.GeofenceResponse, err error)
+	GetGreatCircleDistance(ctx context.Context, query string) (result creator.GreatCircleDistanceResponse, err error)
+	GetPointInPolygon(ctx context.Context, udid string, latitude float64, longitude float64) (result creator.PointInPolygonResponse, err error)
+	PostBuffer(ctx context.Context, bufferRequestBody creator.BufferRequestBody) (result creator.BufferResponse, err error)
+	PostClosestPoint(ctx context.Context, latitude float64, longitude float64, closestPointRequestBody creator.GeoJSONFeatureCollection, numberOfClosestPoints *int32) (result creator.ClosestPointResponse, err error)
+	PostGeofence(ctx context.Context, deviceID string, latitude float64, longitude float64, searchGeofenceRequestBody creator.GeoJSONFeatureCollection, z *float64, userTime *date.Time, searchBuffer *float64, isAsync *bool, mode creator.GeofenceMode) (result creator.GeofenceResponse, err error)
+	PostPointInPolygon(ctx context.Context, latitude float64, longitude float64, pointInPolygonRequestBody creator.GeoJSONFeatureCollection) (result creator.PointInPolygonResponse, err error)
+}
+
+var _ SpatialClientAPI = (*creator.SpatialClient)(nil)
+
+// TilesetClientAPI contains the set of methods on the TilesetClient type.
+type TilesetClientAPI interface {
+	Create(ctx context.Context, datasetID string, description string) (result creator.TilesetCreateFuture, err error)
+	Delete(ctx context.Context, tilesetID string) (result autorest.Response, err error)
+	Get(ctx context.Context, tilesetID string) (result creator.TilesetDetailInfo, err error)
+	GetOperation(ctx context.Context, operationID string) (result creator.LongRunningOperationResult, err error)
+	List(ctx context.Context) (result creator.TilesetListResponsePage, err error)
+	ListComplete(ctx context.Context) (result creator.TilesetListResponseIterator, err error)
+}
+
+var _ TilesetClientAPI = (*creator.TilesetClient)(nil)
+
+// WFSClientAPI contains the set of methods on the WFSClient type.
+type WFSClientAPI interface {
+	DeleteFeature(ctx context.Context, datasetID string, collectionID string, featureID string) (result autorest.Response, err error)
+	GetCollection(ctx context.Context, datasetID string, collectionID string) (result creator.CollectionInfo, err error)
+	GetCollectionDefinition(ctx context.Context, datasetID string, collectionID string) (result creator.CollectionDefinitionResponse, err error)
+	GetCollections(ctx context.Context, datasetID string) (result creator.CollectionsResponse, err error)
+	GetConformance(ctx context.Context, datasetID string) (result creator.ConformanceResponse, err error)
+	GetFeature(ctx context.Context, datasetID string, collectionID string, featureID string) (result creator.FeatureResponse, err error)
+	GetFeatures(ctx context.Context, datasetID string, collectionID string, limit *int32, bbox string, filter string) (result creator.ExtendedGeoJSONFeatureCollection, err error)
+	GetLandingPage(ctx context.Context, datasetID string) (result creator.LandingPageResponse, err error)
+}
+
+var _ WFSClientAPI = (*creator.WFSClient)(nil)
