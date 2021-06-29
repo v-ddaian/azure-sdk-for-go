@@ -7,20 +7,22 @@ package creator
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 import (
-    "github.com/Azure/go-autorest/autorest"
-    "github.com/Azure/go-autorest/autorest/azure"
-    "net/http"
-    "context"
-    "github.com/Azure/go-autorest/tracing"
+	"context"
+	"net/http"
+
+	"github.com/Azure/go-autorest/autorest"
+	"github.com/Azure/go-autorest/autorest/azure"
+	"github.com/Azure/go-autorest/tracing"
 )
 
 // AliasClient is the client for the Alias methods of the Creator service.
 type AliasClient struct {
-    BaseClient
+	BaseClient
 }
+
 // NewAliasClient creates an instance of the AliasClient client.
-func NewAliasClient(xMsClientID string) AliasClient {
-    return AliasClient{ New(xMsClientID)}
+func NewAliasClient(xMsClientID string, SubscriptionKey string) AliasClient {
+	return AliasClient{New(xMsClientID, SubscriptionKey)}
 }
 
 // Assign **Applies to:** see pricing [tiers](https://aka.ms/AzureMapsPricingTier).
@@ -49,83 +51,84 @@ func NewAliasClient(xMsClientID string) AliasClient {
 // "lastUpdatedTimestamp": "2020-02-13T21:19:22.123Z"
 // }
 // ```
-    // Parameters:
-        // aliasID - the unique id that references an existing alias.
-        // creatorDataItemID - the unique id that references a creator data item to be aliased.
+// Parameters:
+// aliasID - the unique id that references an existing alias.
+// creatorDataItemID - the unique id that references a creator data item to be aliased.
 func (client AliasClient) Assign(ctx context.Context, aliasID string, creatorDataItemID string) (result AliasListItem, err error) {
-    if tracing.IsEnabled() {
-        ctx = tracing.StartSpan(ctx, fqdn + "/AliasClient.Assign")
-        defer func() {
-            sc := -1
-        if result.Response.Response != nil {
-        sc = result.Response.Response.StatusCode
-        }
-            tracing.EndSpan(ctx, sc, err)
-        }()
-    }
-    req, err := client.AssignPreparer(ctx, aliasID, creatorDataItemID)
-    if err != nil {
-    err = autorest.NewErrorWithError(err, "creator.AliasClient", "Assign", nil , "Failure preparing request")
-    return
-    }
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AliasClient.Assign")
+		defer func() {
+			sc := -1
+			if result.Response.Response != nil {
+				sc = result.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	req, err := client.AssignPreparer(ctx, aliasID, creatorDataItemID)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "Assign", nil, "Failure preparing request")
+		return
+	}
 
-        resp, err := client.AssignSender(req)
-        if err != nil {
-        result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "creator.AliasClient", "Assign", resp, "Failure sending request")
-        return
-        }
+	resp, err := client.AssignSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "Assign", resp, "Failure sending request")
+		return
+	}
 
-        result, err = client.AssignResponder(resp)
-        if err != nil {
-        err = autorest.NewErrorWithError(err, "creator.AliasClient", "Assign", resp, "Failure responding to request")
-        return
-        }
+	result, err = client.AssignResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "Assign", resp, "Failure responding to request")
+		return
+	}
 
-    return
+	return
 }
 
-    // AssignPreparer prepares the Assign request.
-    func (client AliasClient) AssignPreparer(ctx context.Context, aliasID string, creatorDataItemID string) (*http.Request, error) {
-        urlParameters := map[string]interface{} {
-        "geography": autorest.Encode("path",client.Geography),
-        }
+// AssignPreparer prepares the Assign request.
+func (client AliasClient) AssignPreparer(ctx context.Context, aliasID string, creatorDataItemID string) (*http.Request, error) {
+	urlParameters := map[string]interface{}{
+		"geography": autorest.Encode("path", client.Geography),
+	}
 
-        pathParameters := map[string]interface{} {
-        "aliasId": autorest.Encode("path",aliasID),
-        }
+	pathParameters := map[string]interface{}{
+		"aliasId": autorest.Encode("path", aliasID),
+	}
 
-            const APIVersion = "2.0"
-    queryParameters := map[string]interface{} {
-    "api-version": APIVersion,
-    "creatorDataItemId": autorest.Encode("query",creatorDataItemID),
-    }
+	const APIVersion = "2.0"
+	queryParameters := map[string]interface{}{
+		"api-version":       APIVersion,
+		"creatorDataItemId": autorest.Encode("query", creatorDataItemID),
+	}
 
-    preparer := autorest.CreatePreparer(
-autorest.AsPut(),
-autorest.WithCustomBaseURL("https://{geography}.atlas.microsoft.com", urlParameters),
-autorest.WithPathParameters("/aliases/{aliasId}",pathParameters),
-autorest.WithQueryParameters(queryParameters))
-    return preparer.Prepare((&http.Request{}).WithContext(ctx))
-    }
+	preparer := autorest.CreatePreparer(
+		autorest.AsPut(),
+		autorest.WithCustomBaseURL("https://{geography}.atlas.microsoft.com", urlParameters),
+		autorest.WithPathParameters("/aliases/{aliasId}", pathParameters),
+		autorest.WithQueryParameters(queryParameters),
+		autorest.WithHeader("subscription-key", autorest.String(client.SubscriptionKey)))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
 
-    // AssignSender sends the Assign request. The method will close the
-    // http.Response Body if it receives an error.
-    func (client AliasClient) AssignSender(req *http.Request) (*http.Response, error) {
-                return client.Send(req, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-                }
+// AssignSender sends the Assign request. The method will close the
+// http.Response Body if it receives an error.
+func (client AliasClient) AssignSender(req *http.Request) (*http.Response, error) {
+	return client.Send(req, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+}
 
-    // AssignResponder handles the response to the Assign request. The method always
-    // closes the http.Response Body.
-    func (client AliasClient) AssignResponder(resp *http.Response) (result AliasListItem, err error) {
-            err = autorest.Respond(
-            resp,
-            azure.WithErrorUnlessStatusCode(http.StatusOK),
-            autorest.ByUnmarshallingJSON(&result),
-            autorest.ByClosing())
-            result.Response = autorest.Response{Response: resp}
-            return
-    }
+// AssignResponder handles the response to the Assign request. The method always
+// closes the http.Response Body.
+func (client AliasClient) AssignResponder(resp *http.Response) (result AliasListItem, err error) {
+	err = autorest.Respond(
+		resp,
+		azure.WithErrorUnlessStatusCode(http.StatusOK),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
 
 // Create **Applies to:** see pricing [tiers](https://aka.ms/AzureMapsPricingTier).
 //
@@ -155,80 +158,81 @@ autorest.WithQueryParameters(queryParameters))
 // "lastUpdatedTimestamp": "2020-02-13T21:19:22.123Z"
 // }
 // ```
-    // Parameters:
-        // creatorDataItemID - the unique id that references a creator data item to be aliased.
+// Parameters:
+// creatorDataItemID - the unique id that references a creator data item to be aliased.
 func (client AliasClient) Create(ctx context.Context, creatorDataItemID string) (result AliasesCreateResponse, err error) {
-    if tracing.IsEnabled() {
-        ctx = tracing.StartSpan(ctx, fqdn + "/AliasClient.Create")
-        defer func() {
-            sc := -1
-        if result.Response.Response != nil {
-        sc = result.Response.Response.StatusCode
-        }
-            tracing.EndSpan(ctx, sc, err)
-        }()
-    }
-    req, err := client.CreatePreparer(ctx, creatorDataItemID)
-    if err != nil {
-    err = autorest.NewErrorWithError(err, "creator.AliasClient", "Create", nil , "Failure preparing request")
-    return
-    }
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AliasClient.Create")
+		defer func() {
+			sc := -1
+			if result.Response.Response != nil {
+				sc = result.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	req, err := client.CreatePreparer(ctx, creatorDataItemID)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "Create", nil, "Failure preparing request")
+		return
+	}
 
-        resp, err := client.CreateSender(req)
-        if err != nil {
-        result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "creator.AliasClient", "Create", resp, "Failure sending request")
-        return
-        }
+	resp, err := client.CreateSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "Create", resp, "Failure sending request")
+		return
+	}
 
-        result, err = client.CreateResponder(resp)
-        if err != nil {
-        err = autorest.NewErrorWithError(err, "creator.AliasClient", "Create", resp, "Failure responding to request")
-        return
-        }
+	result, err = client.CreateResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "Create", resp, "Failure responding to request")
+		return
+	}
 
-    return
+	return
 }
 
-    // CreatePreparer prepares the Create request.
-    func (client AliasClient) CreatePreparer(ctx context.Context, creatorDataItemID string) (*http.Request, error) {
-        urlParameters := map[string]interface{} {
-        "geography": autorest.Encode("path",client.Geography),
-        }
+// CreatePreparer prepares the Create request.
+func (client AliasClient) CreatePreparer(ctx context.Context, creatorDataItemID string) (*http.Request, error) {
+	urlParameters := map[string]interface{}{
+		"geography": autorest.Encode("path", client.Geography),
+	}
 
-            const APIVersion = "2.0"
-    queryParameters := map[string]interface{} {
-    "api-version": APIVersion,
-    }
-        if len(creatorDataItemID) > 0 {
-        queryParameters["creatorDataItemId"] = autorest.Encode("query",creatorDataItemID)
-        }
+	const APIVersion = "2.0"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
+	if len(creatorDataItemID) > 0 {
+		queryParameters["creatorDataItemId"] = autorest.Encode("query", creatorDataItemID)
+	}
 
-    preparer := autorest.CreatePreparer(
-autorest.AsPost(),
-autorest.WithCustomBaseURL("https://{geography}.atlas.microsoft.com", urlParameters),
-autorest.WithPath("/aliases"),
-autorest.WithQueryParameters(queryParameters))
-    return preparer.Prepare((&http.Request{}).WithContext(ctx))
-    }
+	preparer := autorest.CreatePreparer(
+		autorest.AsPost(),
+		autorest.WithCustomBaseURL("https://{geography}.atlas.microsoft.com", urlParameters),
+		autorest.WithPath("/aliases"),
+		autorest.WithQueryParameters(queryParameters),
+		autorest.WithHeader("subscription-key", autorest.String(client.SubscriptionKey)))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
 
-    // CreateSender sends the Create request. The method will close the
-    // http.Response Body if it receives an error.
-    func (client AliasClient) CreateSender(req *http.Request) (*http.Response, error) {
-                return client.Send(req, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-                }
+// CreateSender sends the Create request. The method will close the
+// http.Response Body if it receives an error.
+func (client AliasClient) CreateSender(req *http.Request) (*http.Response, error) {
+	return client.Send(req, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+}
 
-    // CreateResponder handles the response to the Create request. The method always
-    // closes the http.Response Body.
-    func (client AliasClient) CreateResponder(resp *http.Response) (result AliasesCreateResponse, err error) {
-            err = autorest.Respond(
-            resp,
-            azure.WithErrorUnlessStatusCode(http.StatusOK,http.StatusCreated),
-            autorest.ByUnmarshallingJSON(&result),
-            autorest.ByClosing())
-            result.Response = autorest.Response{Response: resp}
-            return
-    }
+// CreateResponder handles the response to the Create request. The method always
+// closes the http.Response Body.
+func (client AliasClient) CreateResponder(resp *http.Response) (result AliasesCreateResponse, err error) {
+	err = autorest.Respond(
+		resp,
+		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusCreated),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
 
 // Delete **Applies to:** see pricing [tiers](https://aka.ms/AzureMapsPricingTier).
 //
@@ -248,80 +252,81 @@ autorest.WithQueryParameters(queryParameters))
 // ### Delete Alias Response
 //
 // The Delete API returns a HTTP `204 No Content` response with an empty body, if the alias was deleted successfully.
-    // Parameters:
-        // aliasID - the unique id that references an existing alias.
+// Parameters:
+// aliasID - the unique id that references an existing alias.
 func (client AliasClient) Delete(ctx context.Context, aliasID string) (result autorest.Response, err error) {
-    if tracing.IsEnabled() {
-        ctx = tracing.StartSpan(ctx, fqdn + "/AliasClient.Delete")
-        defer func() {
-            sc := -1
-        if result.Response != nil {
-        sc = result.Response.StatusCode
-        }
-            tracing.EndSpan(ctx, sc, err)
-        }()
-    }
-    req, err := client.DeletePreparer(ctx, aliasID)
-    if err != nil {
-    err = autorest.NewErrorWithError(err, "creator.AliasClient", "Delete", nil , "Failure preparing request")
-    return
-    }
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AliasClient.Delete")
+		defer func() {
+			sc := -1
+			if result.Response != nil {
+				sc = result.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	req, err := client.DeletePreparer(ctx, aliasID)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "Delete", nil, "Failure preparing request")
+		return
+	}
 
-        resp, err := client.DeleteSender(req)
-        if err != nil {
-        result.Response = resp
-        err = autorest.NewErrorWithError(err, "creator.AliasClient", "Delete", resp, "Failure sending request")
-        return
-        }
+	resp, err := client.DeleteSender(req)
+	if err != nil {
+		result.Response = resp
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "Delete", resp, "Failure sending request")
+		return
+	}
 
-        result, err = client.DeleteResponder(resp)
-        if err != nil {
-        err = autorest.NewErrorWithError(err, "creator.AliasClient", "Delete", resp, "Failure responding to request")
-        return
-        }
+	result, err = client.DeleteResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "Delete", resp, "Failure responding to request")
+		return
+	}
 
-    return
+	return
 }
 
-    // DeletePreparer prepares the Delete request.
-    func (client AliasClient) DeletePreparer(ctx context.Context, aliasID string) (*http.Request, error) {
-        urlParameters := map[string]interface{} {
-        "geography": autorest.Encode("path",client.Geography),
-        }
+// DeletePreparer prepares the Delete request.
+func (client AliasClient) DeletePreparer(ctx context.Context, aliasID string) (*http.Request, error) {
+	urlParameters := map[string]interface{}{
+		"geography": autorest.Encode("path", client.Geography),
+	}
 
-        pathParameters := map[string]interface{} {
-        "aliasId": autorest.Encode("path",aliasID),
-        }
+	pathParameters := map[string]interface{}{
+		"aliasId": autorest.Encode("path", aliasID),
+	}
 
-            const APIVersion = "2.0"
-    queryParameters := map[string]interface{} {
-    "api-version": APIVersion,
-    }
+	const APIVersion = "2.0"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
 
-    preparer := autorest.CreatePreparer(
-autorest.AsDelete(),
-autorest.WithCustomBaseURL("https://{geography}.atlas.microsoft.com", urlParameters),
-autorest.WithPathParameters("/aliases/{aliasId}",pathParameters),
-autorest.WithQueryParameters(queryParameters))
-    return preparer.Prepare((&http.Request{}).WithContext(ctx))
-    }
+	preparer := autorest.CreatePreparer(
+		autorest.AsDelete(),
+		autorest.WithCustomBaseURL("https://{geography}.atlas.microsoft.com", urlParameters),
+		autorest.WithPathParameters("/aliases/{aliasId}", pathParameters),
+		autorest.WithQueryParameters(queryParameters),
+		autorest.WithHeader("subscription-key", autorest.String(client.SubscriptionKey)))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
 
-    // DeleteSender sends the Delete request. The method will close the
-    // http.Response Body if it receives an error.
-    func (client AliasClient) DeleteSender(req *http.Request) (*http.Response, error) {
-                return client.Send(req, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-                }
+// DeleteSender sends the Delete request. The method will close the
+// http.Response Body if it receives an error.
+func (client AliasClient) DeleteSender(req *http.Request) (*http.Response, error) {
+	return client.Send(req, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+}
 
-    // DeleteResponder handles the response to the Delete request. The method always
-    // closes the http.Response Body.
-    func (client AliasClient) DeleteResponder(resp *http.Response) (result autorest.Response, err error) {
-            err = autorest.Respond(
-            resp,
-            azure.WithErrorUnlessStatusCode(http.StatusOK,http.StatusNoContent),
-            autorest.ByClosing())
-            result.Response = resp
-            return
-    }
+// DeleteResponder handles the response to the Delete request. The method always
+// closes the http.Response Body.
+func (client AliasClient) DeleteResponder(resp *http.Response) (result autorest.Response, err error) {
+	err = autorest.Respond(
+		resp,
+		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusNoContent),
+		autorest.ByClosing())
+	result.Response = resp
+	return
+}
 
 // GetDetails **Applies to:** see pricing [tiers](https://aka.ms/AzureMapsPricingTier).
 //
@@ -354,81 +359,83 @@ autorest.WithQueryParameters(queryParameters))
 // "lastUpdatedTimestamp": "2020-02-13T21:19:22.123Z"
 // }
 // ```
-    // Parameters:
-        // aliasID - the unique id that references an existing alias.
+// Parameters:
+// aliasID - the unique id that references an existing alias.
 func (client AliasClient) GetDetails(ctx context.Context, aliasID string) (result AliasListItem, err error) {
-    if tracing.IsEnabled() {
-        ctx = tracing.StartSpan(ctx, fqdn + "/AliasClient.GetDetails")
-        defer func() {
-            sc := -1
-        if result.Response.Response != nil {
-        sc = result.Response.Response.StatusCode
-        }
-            tracing.EndSpan(ctx, sc, err)
-        }()
-    }
-    req, err := client.GetDetailsPreparer(ctx, aliasID)
-    if err != nil {
-    err = autorest.NewErrorWithError(err, "creator.AliasClient", "GetDetails", nil , "Failure preparing request")
-    return
-    }
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AliasClient.GetDetails")
+		defer func() {
+			sc := -1
+			if result.Response.Response != nil {
+				sc = result.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	req, err := client.GetDetailsPreparer(ctx, aliasID)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "GetDetails", nil, "Failure preparing request")
+		return
+	}
 
-        resp, err := client.GetDetailsSender(req)
-        if err != nil {
-        result.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "creator.AliasClient", "GetDetails", resp, "Failure sending request")
-        return
-        }
+	resp, err := client.GetDetailsSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "GetDetails", resp, "Failure sending request")
+		return
+	}
 
-        result, err = client.GetDetailsResponder(resp)
-        if err != nil {
-        err = autorest.NewErrorWithError(err, "creator.AliasClient", "GetDetails", resp, "Failure responding to request")
-        return
-        }
+	result, err = client.GetDetailsResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "GetDetails", resp, "Failure responding to request")
+		return
+	}
 
-    return
+	return
 }
 
-    // GetDetailsPreparer prepares the GetDetails request.
-    func (client AliasClient) GetDetailsPreparer(ctx context.Context, aliasID string) (*http.Request, error) {
-        urlParameters := map[string]interface{} {
-        "geography": autorest.Encode("path",client.Geography),
-        }
+// GetDetailsPreparer prepares the GetDetails request.
+func (client AliasClient) GetDetailsPreparer(ctx context.Context, aliasID string) (*http.Request, error) {
+	urlParameters := map[string]interface{}{
+		"geography": autorest.Encode("path", client.Geography),
+	}
 
-        pathParameters := map[string]interface{} {
-        "aliasId": autorest.Encode("path",aliasID),
-        }
+	pathParameters := map[string]interface{}{
+		"aliasId": autorest.Encode("path", aliasID),
+	}
 
-            const APIVersion = "2.0"
-    queryParameters := map[string]interface{} {
-    "api-version": APIVersion,
-    }
+	const APIVersion = "2.0"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
 
-    preparer := autorest.CreatePreparer(
-autorest.AsGet(),
-autorest.WithCustomBaseURL("https://{geography}.atlas.microsoft.com", urlParameters),
-autorest.WithPathParameters("/aliases/{aliasId}",pathParameters),
-autorest.WithQueryParameters(queryParameters))
-    return preparer.Prepare((&http.Request{}).WithContext(ctx))
-    }
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithCustomBaseURL("https://{geography}.atlas.microsoft.com", urlParameters),
+		autorest.WithPathParameters("/aliases/{aliasId}", pathParameters),
+		autorest.WithQueryParameters(queryParameters),
+		autorest.WithHeader("subscription-key", autorest.String(client.SubscriptionKey)),
+		autorest.WithHeader("subscription-key", autorest.String(client.SubscriptionKey)))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
 
-    // GetDetailsSender sends the GetDetails request. The method will close the
-    // http.Response Body if it receives an error.
-    func (client AliasClient) GetDetailsSender(req *http.Request) (*http.Response, error) {
-                return client.Send(req, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-                }
+// GetDetailsSender sends the GetDetails request. The method will close the
+// http.Response Body if it receives an error.
+func (client AliasClient) GetDetailsSender(req *http.Request) (*http.Response, error) {
+	return client.Send(req, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+}
 
-    // GetDetailsResponder handles the response to the GetDetails request. The method always
-    // closes the http.Response Body.
-    func (client AliasClient) GetDetailsResponder(resp *http.Response) (result AliasListItem, err error) {
-            err = autorest.Respond(
-            resp,
-            azure.WithErrorUnlessStatusCode(http.StatusOK),
-            autorest.ByUnmarshallingJSON(&result),
-            autorest.ByClosing())
-            result.Response = autorest.Response{Response: resp}
-            return
-    }
+// GetDetailsResponder handles the response to the GetDetails request. The method always
+// closes the http.Response Body.
+func (client AliasClient) GetDetailsResponder(resp *http.Response) (result AliasListItem, err error) {
+	err = autorest.Respond(
+		resp,
+		azure.WithErrorUnlessStatusCode(http.StatusOK),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
 
 // List **Applies to:** see pricing [tiers](https://aka.ms/AzureMapsPricingTier).
 //
@@ -473,114 +480,114 @@ autorest.WithQueryParameters(queryParameters))
 // }
 // ```
 func (client AliasClient) List(ctx context.Context) (result AliasListResponsePage, err error) {
-    if tracing.IsEnabled() {
-        ctx = tracing.StartSpan(ctx, fqdn + "/AliasClient.List")
-        defer func() {
-            sc := -1
-        if result.alr.Response.Response != nil {
-        sc = result.alr.Response.Response.StatusCode
-        }
-            tracing.EndSpan(ctx, sc, err)
-        }()
-    }
-        result.fn = client.listNextResults
-    req, err := client.ListPreparer(ctx)
-    if err != nil {
-    err = autorest.NewErrorWithError(err, "creator.AliasClient", "List", nil , "Failure preparing request")
-    return
-    }
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AliasClient.List")
+		defer func() {
+			sc := -1
+			if result.alr.Response.Response != nil {
+				sc = result.alr.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.fn = client.listNextResults
+	req, err := client.ListPreparer(ctx)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "List", nil, "Failure preparing request")
+		return
+	}
 
-        resp, err := client.ListSender(req)
-        if err != nil {
-        result.alr.Response = autorest.Response{Response: resp}
-        err = autorest.NewErrorWithError(err, "creator.AliasClient", "List", resp, "Failure sending request")
-        return
-        }
+	resp, err := client.ListSender(req)
+	if err != nil {
+		result.alr.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "List", resp, "Failure sending request")
+		return
+	}
 
-        result.alr, err = client.ListResponder(resp)
-        if err != nil {
-        err = autorest.NewErrorWithError(err, "creator.AliasClient", "List", resp, "Failure responding to request")
-        return
-        }
-            if result.alr.hasNextLink() && result.alr.IsEmpty() {
-            err = result.NextWithContext(ctx)
-            return
-            }
+	result.alr, err = client.ListResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "List", resp, "Failure responding to request")
+		return
+	}
+	if result.alr.hasNextLink() && result.alr.IsEmpty() {
+		err = result.NextWithContext(ctx)
+		return
+	}
 
-    return
+	return
 }
 
-    // ListPreparer prepares the List request.
-    func (client AliasClient) ListPreparer(ctx context.Context) (*http.Request, error) {
-        urlParameters := map[string]interface{} {
-        "geography": autorest.Encode("path",client.Geography),
-        }
+// ListPreparer prepares the List request.
+func (client AliasClient) ListPreparer(ctx context.Context) (*http.Request, error) {
+	urlParameters := map[string]interface{}{
+		"geography": autorest.Encode("path", client.Geography),
+	}
 
-            const APIVersion = "2.0"
-    queryParameters := map[string]interface{} {
-    "api-version": APIVersion,
-    }
+	const APIVersion = "2.0"
+	queryParameters := map[string]interface{}{
+		"api-version": APIVersion,
+	}
 
-    preparer := autorest.CreatePreparer(
-autorest.AsGet(),
-autorest.WithCustomBaseURL("https://{geography}.atlas.microsoft.com", urlParameters),
-autorest.WithPath("/aliases"),
-autorest.WithQueryParameters(queryParameters))
-    return preparer.Prepare((&http.Request{}).WithContext(ctx))
-    }
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithCustomBaseURL("https://{geography}.atlas.microsoft.com", urlParameters),
+		autorest.WithPath("/aliases"),
+		autorest.WithQueryParameters(queryParameters),
+		autorest.WithHeader("subscription-key", autorest.String(client.SubscriptionKey)))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
 
-    // ListSender sends the List request. The method will close the
-    // http.Response Body if it receives an error.
-    func (client AliasClient) ListSender(req *http.Request) (*http.Response, error) {
-                return client.Send(req, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
-                }
+// ListSender sends the List request. The method will close the
+// http.Response Body if it receives an error.
+func (client AliasClient) ListSender(req *http.Request) (*http.Response, error) {
+	return client.Send(req, autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+}
 
-    // ListResponder handles the response to the List request. The method always
-    // closes the http.Response Body.
-    func (client AliasClient) ListResponder(resp *http.Response) (result AliasListResponse, err error) {
-            err = autorest.Respond(
-            resp,
-            azure.WithErrorUnlessStatusCode(http.StatusOK),
-            autorest.ByUnmarshallingJSON(&result),
-            autorest.ByClosing())
-            result.Response = autorest.Response{Response: resp}
-            return
-    }
+// ListResponder handles the response to the List request. The method always
+// closes the http.Response Body.
+func (client AliasClient) ListResponder(resp *http.Response) (result AliasListResponse, err error) {
+	err = autorest.Respond(
+		resp,
+		azure.WithErrorUnlessStatusCode(http.StatusOK),
+		autorest.ByUnmarshallingJSON(&result),
+		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
 
-            // listNextResults retrieves the next set of results, if any.
-            func (client AliasClient) listNextResults(ctx context.Context, lastResults AliasListResponse) (result AliasListResponse, err error) {
-            req, err := lastResults.aliasListResponsePreparer(ctx)
-            if err != nil {
-            return result, autorest.NewErrorWithError(err, "creator.AliasClient", "listNextResults", nil , "Failure preparing next results request")
-            }
-            if req == nil {
-            return
-            }
-            resp, err := client.ListSender(req)
-            if err != nil {
-            result.Response = autorest.Response{Response: resp}
-            return result, autorest.NewErrorWithError(err, "creator.AliasClient", "listNextResults", resp, "Failure sending next results request")
-            }
-            result, err = client.ListResponder(resp)
-            if err != nil {
-            err = autorest.NewErrorWithError(err, "creator.AliasClient", "listNextResults", resp, "Failure responding to next results request")
-            }
-            return
-                    }
+// listNextResults retrieves the next set of results, if any.
+func (client AliasClient) listNextResults(ctx context.Context, lastResults AliasListResponse) (result AliasListResponse, err error) {
+	req, err := lastResults.aliasListResponsePreparer(ctx)
+	if err != nil {
+		return result, autorest.NewErrorWithError(err, "creator.AliasClient", "listNextResults", nil, "Failure preparing next results request")
+	}
+	if req == nil {
+		return
+	}
+	resp, err := client.ListSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		return result, autorest.NewErrorWithError(err, "creator.AliasClient", "listNextResults", resp, "Failure sending next results request")
+	}
+	result, err = client.ListResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "creator.AliasClient", "listNextResults", resp, "Failure responding to next results request")
+	}
+	return
+}
 
-            // ListComplete enumerates all values, automatically crossing page boundaries as required.
-            func (client AliasClient) ListComplete(ctx context.Context) (result AliasListResponseIterator, err error) {
-            if tracing.IsEnabled() {
-            ctx = tracing.StartSpan(ctx, fqdn + "/AliasClient.List")
-            defer func() {
-            sc := -1
-            if result.Response().Response.Response != nil {
-            sc = result.page.Response().Response.Response.StatusCode
-            }
-            tracing.EndSpan(ctx, sc, err)
-            }()
-            }
-                    result.page, err = client.List(ctx)
-                            return
-            }
-
+// ListComplete enumerates all values, automatically crossing page boundaries as required.
+func (client AliasClient) ListComplete(ctx context.Context) (result AliasListResponseIterator, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AliasClient.List")
+		defer func() {
+			sc := -1
+			if result.Response().Response.Response != nil {
+				sc = result.page.Response().Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	result.page, err = client.List(ctx)
+	return
+}
