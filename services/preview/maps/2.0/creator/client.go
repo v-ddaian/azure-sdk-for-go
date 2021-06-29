@@ -21,9 +21,9 @@ const (
 // BaseClient is the base client for Creator.
 type BaseClient struct {
 	autorest.Client
-	Geography   GeographicResourceLocation
-	XMsClientID string
-    SubscriptionKey string
+	Geography       GeographicResourceLocation
+	XMsClientID     string
+	SubscriptionKey string
 }
 
 // New creates an instance of the BaseClient client.
@@ -34,9 +34,9 @@ func New(xMsClientID string, SubscriptionKey string) BaseClient {
 // NewWithoutDefaults creates an instance of the BaseClient client.
 func NewWithoutDefaults(xMsClientID string, geography GeographicResourceLocation, SubscriptionKey string) BaseClient {
 	return BaseClient{
-		Client:      autorest.NewClientWithUserAgent(UserAgent()),
-		Geography:   geography,
-		XMsClientID: xMsClientID,
-        SubscriptionKey: SubscriptionKey
+		Client:          autorest.NewClientWithUserAgent(UserAgent()),
+		Geography:       geography,
+		XMsClientID:     xMsClientID,
+		SubscriptionKey: SubscriptionKey,
 	}
 }
